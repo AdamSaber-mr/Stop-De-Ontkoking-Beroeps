@@ -1,0 +1,138 @@
+/* header styling */
+/* Header base */
+#header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #A9F2D7;
+    z-index: 1000;
+    transition: padding 0.3s ease, background-color 0.3s ease;
+}
+
+/* Shrinked header */
+#header.shrink {
+    padding: 0.5rem 2rem;
+    background-color: #94E0C7; /* slightly darker on scroll */
+}
+
+/* Site title */
+#site-title {
+    font-size: clamp(1.5rem, 2vw, 2rem); 
+    padding-bottom: 0;
+    margin: 0;
+    font-weight: bold;
+    color: #222;
+    font-family: 'Poppins', sans-serif;
+    transition: font-size 0.3s ease;
+}
+
+#site-title:hover{
+    cursor: default;
+}
+
+/* Shrinked title */
+#header.shrink #site-title {
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+}
+
+/* Navigation menu */
+#nav-menu {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: 4vw;
+    list-style: none;
+    gap: 2vw;
+    align-items: center;
+}
+
+/* Nav items with hover effect */
+#nav-menu li {
+    font-size: 1.7rem;
+    font-family: 'Poppins', sans-serif;
+    position: relative; 
+    transition: color 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
+    color: #333; 
+    padding: 0.5rem 0; 
+}
+
+#nav-menu li::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background-color: #007BFF; 
+    transition: width 0.3s ease;
+}
+
+#nav-menu li:hover {
+    cursor: pointer;
+    color: #007BFF; 
+    transform: translateY(-3px); 
+}
+
+#nav-menu li:hover::after {
+    width: 100%;
+}
+
+/* Shrink nav items on scroll */
+#header.shrink #nav-menu li {
+    font-size: 1.5rem;
+}
+
+/* Account section */
+#acount {
+    width: 3.5rem;           
+    height: 3.5rem;         
+    border-radius: 50%;       
+    background-color: #FFFFFF;
+    margin-right: 4vw;      
+    flex-shrink: 0;          
+}
+
+#acount img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;   
+}
+
+#account-section {
+    margin-right: 3vw;
+    display: flex;
+    gap: 10px;
+}
+
+#account-section button {
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+
+#logo {
+    width: 80px;
+    height: auto;
+    margin-right: 7px;
+    transition: width 0.3s ease;
+}
+
+#header.shrink #logo {
+    width: 60px;
+}
+
+
+/* header media qerry */
+@media (max-width: 555px) {
+   #header *{
+    display: none;
+   }
+}

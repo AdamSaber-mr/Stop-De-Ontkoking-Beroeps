@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/header.css">
 </head>
 <body>
     <div id="header">
@@ -91,7 +92,9 @@
         </div>
     </div>
 
-    <div id="banner-2"></div>
+    <div id="banner-2">
+        <img src="images/odiseo-castrejon-1SPu0KT-Ejg-unsplash 1.png">
+    </div>
 
     <div class="category-container">
         <div class="title-search-container">
@@ -151,6 +154,7 @@
     
 </body>
 
+<script src="js/header.js"></script>
 <script>
 const searchButtons = document.querySelectorAll('.search-btn');
 
@@ -160,17 +164,6 @@ searchButtons.forEach(btn => {
     container.classList.toggle('active');
   });
 });
-
-const header = document.getElementById('header');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) { // scroll threshold
-        header.classList.add('shrink');
-    } else {
-        header.classList.remove('shrink');
-    }
-});
-
 </script>
 
 </html>
