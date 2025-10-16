@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
     <div id="header">
       <div id="logo-container">
-          <img id="logo" src="images/placeholder.svg" alt="Logo">
+          <img id="logo" src="images/logo.png" alt="Logo">
       </div>
   
-      <h1 id="site-title">Website Title</h1>
+      <h1 id="site-title">Cook up</h1>
   
       <ul id="nav-menu">
-          <li id="nav-home">Home</li>
-          <li id="nav-about">Catogory</li>
-          <li id="nav-services">Trending</li>
-          <li id="nav-contact">Journal</li>
+          <li>Home</li>
+          <li>Browse</li>
+          <li>Watch</li>
       </ul>
   
       <!-- <div id="account-section">
@@ -26,17 +29,21 @@
           <button id="signup-btn">Sign Up</button>
       </div> -->
 
-      <div id="acount"></div>
+      <div id="acount">
+        <img src="images/user_placeholder.png">
+      </div>
     </div>
 
 
-    <div id="banner-1"></div>
+    <div id="banner-1">
+       <img src="images/chad-montano-lP5MCM6nZ5A-unsplash 1.png" alt="Category Icon">
+    </div>
 
     <div class="category-container">
         <div class="title-search-container">
             <h1>Category</h1>
             <div class="search">
-                <button class="search-btn">🔍</button>
+                <button class="search-btn"><img src="images/magnifying-glass.png"></button>
                 <input type="text" class="search-input" placeholder="Search..." />
             </div>
         </div>
@@ -44,7 +51,7 @@
         <div class="category-feed">
             <div class="category-item">
                 <div class="category-header">
-                    <img src="images/placeholder.svg" alt="Category Icon">
+                    <img src="images/recepy_placholder.png" alt="Category Icon">
                 </div>
                 <h2 class="category-title">Category Title</h2>
                 <p class="category-description">
@@ -90,7 +97,7 @@
         <div class="title-search-container">
             <h1>Trending</h1>
             <div class="search">
-                <button class="search-btn">🔍</button>
+                <button class="search-btn"><img src="images/magnifying-glass.png"></button>
                 <input type="text" class="search-input" placeholder="Search..." />
             </div>
         </div>
@@ -153,6 +160,17 @@ searchButtons.forEach(btn => {
     container.classList.toggle('active');
   });
 });
+
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) { // scroll threshold
+        header.classList.add('shrink');
+    } else {
+        header.classList.remove('shrink');
+    }
+});
+
 </script>
 
 </html>

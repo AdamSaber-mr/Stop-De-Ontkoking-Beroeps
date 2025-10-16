@@ -1,56 +1,105 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #FFFDC9;
 }
 
 /* header styling */
+/* Header base */
 #header {
     position: sticky;
+    top: 0;
     display: flex;
-    top: 0; 
     align-items: center;
-    border-bottom: 2px solid gray;
-    padding: 1rem;
-    padding-bottom: 0;
-    margin-bottom: -2px;
-    background-color: #fff;
-    z-index: 1000
+    padding: 1rem 2rem;
+    background-color: #A9F2D7;
+    z-index: 1000;
+    transition: padding 0.3s ease, background-color 0.3s ease;
 }
 
+/* Shrinked header */
+#header.shrink {
+    padding: 0.5rem 2rem;
+    background-color: #94E0C7; /* slightly darker on scroll */
+}
+
+/* Site title */
 #site-title {
     font-size: clamp(1.5rem, 2vw, 2rem); 
     padding-bottom: 0;
     margin: 0;
     font-weight: bold;
     color: #222;
+    font-family: 'Poppins', sans-serif;
+    transition: font-size 0.3s ease;
 }
 
+/* Shrinked title */
+#header.shrink #site-title {
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+}
+
+/* Navigation menu */
 #nav-menu {
     display: flex;
     flex-direction: row;
     margin-left: auto;
-    margin-right: 8vw;
+    margin-right: 4vw;
     list-style: none;
     gap: 2vw;
     align-items: center;
 }
 
+/* Nav items with hover effect */
 #nav-menu li {
-    font-size: 1.25rem;
-    transition: color 0.2s ease, transform 0.2s ease;
+    font-size: 1.7rem;
+    font-family: 'Poppins', sans-serif;
+    position: relative; 
+    transition: color 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
+    color: #333; 
+    padding: 0.5rem 0; 
+}
+
+#nav-menu li::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background-color: #007BFF; 
+    transition: width 0.3s ease;
 }
 
 #nav-menu li:hover {
     cursor: pointer;
+    color: #007BFF; 
+    transform: translateY(-3px); 
 }
 
+#nav-menu li:hover::after {
+    width: 100%;
+}
+
+/* Shrink nav items on scroll */
+#header.shrink #nav-menu li {
+    font-size: 1.5rem;
+}
+
+/* Account section */
 #acount {
-    width: 2.2rem;           /* scalable with font size */
-    height: 2.2rem;          /* keeps it square */
-    border-radius: 50%;       /* always circular */
-    background-color: gray;
-    margin-right: 2vw;       /* relative to viewport width */
-    flex-shrink: 0;          /* prevents shrinking in flex containers */
+    width: 3.5rem;           
+    height: 3.5rem;         
+    border-radius: 50%;       
+    background-color: #FFFFFF;
+    margin-right: 4vw;      
+    flex-shrink: 0;          
+}
+
+#acount img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;   
 }
 
 #account-section {
@@ -70,10 +119,20 @@ body {
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-#logo{
-    width: 51px;
-    height: 51px;
+/* Logo */
+#logo {
+    width: 80px;
+    height: auto;
+    margin-right: 7px;
+    transition: width 0.3s ease;
 }
+
+/* Shrink logo */
+#header.shrink #logo {
+    width: 60px;
+}
+
+
 
 /* header media qerry */
 @media (max-width: 555px) {
@@ -85,11 +144,16 @@ body {
 
 /* banner 1 styling */
 #banner-1{
-    background-color: gray;
-    margin-top: 20px;
     margin-bottom: clamp(5vh, 7vh, 10vh);
     width: 100%;
     height: 90vh;
+}
+
+#banner-1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* scales and crops image to fill container */
+    display: block;    /* removes inline spacing */
 }
 
 /* Banner 1 meadia qerry */
@@ -114,8 +178,8 @@ body {
 }
 
 .title-search-container h1 {
-  padding-right: 2vw;
   font-size: clamp(24px, 5vw, 55px);
+  font-family: 'Poppins', sans-serif;
 }
 
 .search {
@@ -145,6 +209,13 @@ body {
   color: white;
   cursor: pointer;
   transition: transform 0.3s ease;
+}
+
+.search-btn img {
+  width: 30px;   
+  height: auto;  
+  object-fit: contain; 
+  display: block;      
 }
 
 .search.active .search-input {
@@ -181,6 +252,8 @@ body {
   cursor: pointer;
   background-color: wheat;
   overflow: hidden;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 
@@ -202,6 +275,7 @@ body {
   padding-left: 1vw;
   font-size: clamp(18px, 2vw, 22px);
   margin-bottom: 5px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .category-description {
@@ -215,7 +289,53 @@ body {
   white-space: normal;
   line-height: 1.5;
   color: #333;
-  transition: font-size 0.3s ease, padding 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.category-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  filter: brightness(1.03);
+}
+
+.category-item:hover .category-header img {
+  transform: scale(1.03);
+}
+
+.category-item:hover .category-title {
+  color: #007BFF;
+  transition: color 0.3s ease;
+}
+
+.category-item:hover .category-description {
+  color: #222;
+}
+
+/* Hover effect */
+.search-btn:hover {
+  transform: scale(1.05);         
+  background-color: rgba(255, 255, 255, 0.1); 
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.search-btn:hover img {
+  transform: rotate(15deg);
+  transition: transform 0.3s ease;
+}
+
+.search-btn:active {
+  transform: scale(0.95);         
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+.search-btn img {
+  tran
+
+.search-input:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
 }
 
 
@@ -263,4 +383,5 @@ body {
     background-color: gray;
     display: flex;             
     justify-self: center;
+}
 }
