@@ -1,11 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Shorts Prototype</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  .shorts-container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+  .short {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    transition: transform 0.5s ease;
+  }
+  video {
+    height: 90vh;
+    border-radius: 10px;
+  }
+  .actions {
+    position: absolute;
+    right: 20px;
+    bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .action {
+    background: rgba(0,0,0,0.6);
+    border-radius: 50%;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
-    
+
+<div class="shorts-container" id="shorts">
+  <div class="short">
+    <video src="https://www.w3schools.com/html/mov_bbb.mp4" autoplay loop muted></video>
+    <div class="actions">
+      <div class="action">❤️</div>
+      <div class="action">💬</div>
+    </div>
+  </div>
+
+  <div class="short">
+    <video src="https://www.w3schools.com/html/movie.mp4" autoplay loop muted></video>
+    <div class="actions">
+      <div class="action">❤️</div>
+      <div class="action">💬</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const shorts = document.querySelectorAll('.short');
+let current = 0;
+
+function showShort(index) {
+  shorts.forEach((s, i) => {
+    s.style.transform = `translateY(${(i - index) * 100}%)`;
+    const video = s.querySelector('video');
+    if (i === index) video.play();
+    else video.pause();
+  });
+}
+
+showShort(current);
+
+window.addEventListener('wheel', e => {
+  if (e.deltaY > 0) {
+    current = Math.min(current + 1, shorts.length - 1);
+  } else {
+    current = Math.max(current - 1, 0);
+  }
+  showShort(current);
+});
+
+let startY = 0;
+window.addEventListener('touchstart', e => startY = e.touches[0].clientY);
+window.addEventListener('touchend', e => {
+  let endY = e.changedTouches[0].clientY;
+  if (startY - endY > 50) current = Math.min(current + 1, shorts.length - 1);
+  if (endY - startY > 50) current = Math.max(current - 1, 0);
+  showShort(current);
+});
+</script>
+
 </body>
 </html>
