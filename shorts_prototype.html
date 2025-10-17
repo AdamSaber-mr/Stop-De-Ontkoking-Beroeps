@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YouTube Shorts Prototype (Images)</title>
+<title>YouTube Shorts Prototype (Looping Images)</title>
 <style>
   * {
     margin: 0;
@@ -90,7 +90,7 @@
 <script>
 const shorts = document.querySelectorAll('.short');
 let current = 0;
-let canScroll = true; // cooldown flag
+let canScroll = true;
 
 function showShort(index) {
   shorts.forEach((s, i) => {
@@ -105,13 +105,13 @@ function scrollToNext(direction) {
   canScroll = false;
 
   if (direction === 'down') {
-    current = Math.min(current + 1, shorts.length - 1);
+    current = (current + 1) % shorts.length; // loop forward
   } else {
-    current = Math.max(current - 1, 0);
+    current = (current - 1 + shorts.length) % shorts.length; // loop backward
   }
-  showShort(current);
 
-  setTimeout(() => canScroll = true, 800); // delay before next scroll
+  showShort(current);
+  setTimeout(() => canScroll = true, 800); // cooldown
 }
 
 window.addEventListener('wheel', e => {
