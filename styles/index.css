@@ -76,6 +76,7 @@ body {
    Banner 2
 ========================================= */
 #banner-2 {
+    position: relative;
     width: clamp(85%, 90vw, 95%);
     height: clamp(50vh, 70vh, 80vh);
     margin: 0 auto clamp(8vh, 15vh, 20vh);
@@ -83,6 +84,30 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+}
+
+#banner-2 h1{
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+
+    background: linear-gradient(90deg, #fff1e6, #ffd6c4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+
+    /* text-shadow: 0 0 20px rgba(238, 9, 121, 0.5); */
+
+
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
 }
 
 #banner-2 img{
