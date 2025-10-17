@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YouTube Shorts Prototype</title>
+<title>YouTube Shorts Prototype (Images)</title>
 <style>
   * {
     margin: 0;
@@ -33,11 +33,12 @@
     justify-content: center;
     align-items: center;
     background: #000;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s ease;
   }
-  video {
+  img {
     height: 90vh;
     border-radius: 10px;
+    object-fit: cover;
   }
   .actions {
     position: absolute;
@@ -62,7 +63,7 @@
 
 <div class="shorts-container" id="shorts">
   <div class="short">
-    <video src="https://www.w3schools.com/html/mov_bbb.mp4" autoplay loop muted></video>
+    <img src="https://picsum.photos/id/237/720/1280" alt="Short 1">
     <div class="actions">
       <div class="action">❤️</div>
       <div class="action">💬</div>
@@ -70,7 +71,15 @@
   </div>
 
   <div class="short">
-    <video src="https://www.w3schools.com/html/movie.mp4" autoplay loop muted></video>
+    <img src="https://picsum.photos/id/238/720/1280" alt="Short 2">
+    <div class="actions">
+      <div class="action">❤️</div>
+      <div class="action">💬</div>
+    </div>
+  </div>
+
+  <div class="short">
+    <img src="https://picsum.photos/id/239/720/1280" alt="Short 3">
     <div class="actions">
       <div class="action">❤️</div>
       <div class="action">💬</div>
@@ -81,34 +90,41 @@
 <script>
 const shorts = document.querySelectorAll('.short');
 let current = 0;
+let canScroll = true; // cooldown flag
 
 function showShort(index) {
   shorts.forEach((s, i) => {
     s.style.transform = `translateY(${(i - index) * 100}%)`;
-    const video = s.querySelector('video');
-    if (i === index) video.play();
-    else video.pause();
   });
 }
 
 showShort(current);
 
-window.addEventListener('wheel', e => {
-  if (e.deltaY > 0) {
+function scrollToNext(direction) {
+  if (!canScroll) return;
+  canScroll = false;
+
+  if (direction === 'down') {
     current = Math.min(current + 1, shorts.length - 1);
   } else {
     current = Math.max(current - 1, 0);
   }
   showShort(current);
+
+  setTimeout(() => canScroll = true, 800); // delay before next scroll
+}
+
+window.addEventListener('wheel', e => {
+  if (e.deltaY > 0) scrollToNext('down');
+  else if (e.deltaY < 0) scrollToNext('up');
 });
 
 let startY = 0;
 window.addEventListener('touchstart', e => startY = e.touches[0].clientY);
 window.addEventListener('touchend', e => {
   let endY = e.changedTouches[0].clientY;
-  if (startY - endY > 50) current = Math.min(current + 1, shorts.length - 1);
-  if (endY - startY > 50) current = Math.max(current - 1, 0);
-  showShort(current);
+  if (startY - endY > 50) scrollToNext('down');
+  if (endY - startY > 50) scrollToNext('up');
 });
 </script>
 
