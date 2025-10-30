@@ -18,9 +18,35 @@ body {
 
 #short_container {
     width: 30vw;
+    min-width: 300px;
     height: 80vh; 
     overflow: hidden;
     position: relative;
+}
+
+#recepy{
+    width: 30vw;
+    min-width: 300px;
+    height: 80vh; 
+    overflow: hidden;
+    display: none;
+    background: gray;
+    border-radius: 15px;
+}
+
+#recepy h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+    color: #00aaff;
+}
+
+#recepy ul {
+    margin-top: 0.5rem;
+    padding-left: 1.2rem;
+}
+
+#recepy li {
+    margin: 0.3rem 0;
 }
 
 .short {

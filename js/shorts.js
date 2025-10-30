@@ -87,3 +87,29 @@ function heart() {
     img.src = "images/heart_unfilled.png";
   }
 }
+
+function show_recepy_window() {
+  const shorts_container = document.getElementById("short_container");
+  shorts_container.style.display = "none";
+
+  const recepy_container = document.getElementById("recepy")
+  recepy_container.style.display = "block";
+}
+
+function hide_show_recepy_window(){
+  const shorts_container = document.getElementById("short_container");
+  shorts_container.style.display = "block";
+
+  const recepy_container = document.getElementById("recepy")
+  recepy_container.style.display = "none";
+}
+
+function toggle_recepy_window() {
+  const recepy_container = document.getElementById("recepy");
+
+  if (recepy_container.style.display === "block") {
+    hide_show_recepy_window();
+  } else {
+    show_recepy_window();
+  }
+}
