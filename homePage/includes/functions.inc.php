@@ -101,14 +101,14 @@ function loginUser($conn, $username, $pwd) {
     $uidExists = uidExists($conn, $username, $email);
 
     if ($uidExists === false) {
-        header('location: ../login.php?error=wronglogin');
+        header('location: ../login.php?error=wrongloginusername');
         exit();
     }
     $pwdHashed = $uidExists['usersPwd']; // Pakt de password uit de database
     $checkPwd = password_verify($pwd, $pwdHashed); // Kijk of de 2 pwd gelijk zijn aan elkaar
 
     if ($checkPwd === false) {
-        header('location: ../login.php?error=wronglogin');
+        header('location: ../login.php?error=wrongloginpassword');
         exit();
     }
     else if ($checkPwd === true) {
@@ -118,5 +118,4 @@ function loginUser($conn, $username, $pwd) {
         header('location: ../index.php');
         exit();
     }
-
 }

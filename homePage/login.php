@@ -24,8 +24,11 @@ include_once './header.php';
                 if ($_GET['error'] === 'emptyinput') {
                     echo "<p>Fill in all fields!</p>";
                 }
-                else if ($_GET['error'] === 'wronglogin') {
-                    echo "<p>Incorrect login information!</p>";
+                else if ($_GET['error'] === 'wrongloginusername') {
+                    echo "<p>Incorrect login username information!</p>";
+                }
+                else if ($_GET['error'] === 'wrongloginpassword') {
+                    echo "<p>Incorrect login password information!</p>";
                 }
             }
             ?>

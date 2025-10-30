@@ -12,7 +12,6 @@ include_once './header.php';
 
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" placeholder="Full name...">
-                <p>test</p>
 
                 <label for="email">Email:</label>
                 <input type="email" name="email" id="email" placeholder="Email...">

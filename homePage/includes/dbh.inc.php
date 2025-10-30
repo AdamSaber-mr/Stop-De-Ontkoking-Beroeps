@@ -4,12 +4,12 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Database gegevens
-$servername = "localhost"; // Of de ip adress
-$username = "bp102896";
-$password = "Adamsaber0182";
-$database = "loginSysteem_bp01";
+$dbServername = "localhost"; // Of de ip adress
+$dbUsername = "bp102896";
+$dbPassword = "Adamsaber0182";
+$dbDatabase = "loginSysteem_bp01";
 
-$conn = mysqli_connect($servername, $username, $password, $database);
+$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbDatabase);
 
 if (!$conn) {
     die("Connection failed: (" . mysqli_connect_errno() . ") " . mysqli_connect_error());
