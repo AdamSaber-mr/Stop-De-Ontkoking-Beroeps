@@ -21,7 +21,7 @@ include_once './header.php';
             <div class="category-header">
                 <img src="images/recepy_placholder.png" alt="Category Icon">
             </div>
-            <h2 class="category-title">Category Title</h2>
+            <h2 class="category-title">Breakfast</h2>
             <p class="category-description">
                 This is a short description of the category or item. It gives users a quick idea of what it is about.
             </p>
@@ -31,7 +31,7 @@ include_once './header.php';
             <div class="category-header">
                 <img src="images/placeholder.svg" alt="Category Icon">
             </div>
-            <h2 class="category-title">Category Title</h2>
+            <h2 class="category-title">Lunch</h2>
             <p class="category-description">
                 This is a short description of the category or item. It gives users a quick idea of what it is about.
             </p>
@@ -41,7 +41,7 @@ include_once './header.php';
             <div class="category-header">
                 <img src="images/placeholder.svg" alt="Category Icon">
             </div>
-            <h2 class="category-title">Category Title</h2>
+            <h2 class="category-title">Dinner</h2>
             <p class="category-description">
                 This is a short description of the category or item. It gives users a quick idea of what it is about.
             </p>
@@ -51,7 +51,7 @@ include_once './header.php';
             <div class="category-header">
                 <img src="images/placeholder.svg" alt="Category Icon">
             </div>
-            <h2 class="category-title">Category Title</h2>
+            <h2 class="category-title">Snacks</h2>
             <p class="category-description">
                 This is a short description of the category or item. It gives users a quick idea of what it is about.
             </p>
