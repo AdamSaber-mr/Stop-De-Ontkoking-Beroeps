@@ -73,3 +73,17 @@ window.addEventListener('touchmove', e => {
     touchStartY = null;
   }
 }, { passive: false });
+
+
+function heart() {
+  const container = document.getElementById("favroute");
+  const img = container.querySelector("img");
+
+  const src = img.src;
+
+  if (src.includes("unfilled")) {
+    img.src = "images/heart.png";
+  } else {
+    img.src = "images/heart_unfilled.png";
+  }
+}
