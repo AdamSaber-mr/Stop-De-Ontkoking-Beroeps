@@ -32,19 +32,17 @@
     </ul>
 
     <div id="account-section">
-        <?php
-        if (isset($_SESSION['useruid'])) {
-            echo "<li><a href='profile.php'>Profile page</a></li>";
-            echo "<li><a href='./includes/logout.inc.php'>Log out</a></li>";
-        }
-        else {
-            echo "<li><a href='signup.php'>Sign up</a></li>";
-            echo "<li><a href='login.php'>Login</a></li>";
-        }
-        ?>
+     <?php
+     if (isset($_SESSION['useruid'])) {
+         ?>
+         <div id="account">
+             <img src="images/user_placeholder.png" alt="User">
+         </div>
+         <?php
+     } else {
+         echo "<button id='login-btn' onclick=\"window.location.href='login.php'\">Login</button>";
+         echo "<button id='signup-btn' onclick=\"window.location.href='signup.php'\">Sign Up</button>";
+     }
+     ?>
     </div>
-
-    <!-- <div id="acount">
-      <img src="images/user_placeholder.png">
-    </div> -->
 </div>
