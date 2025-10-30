@@ -101,18 +101,28 @@
     margin-right: 3vw;
     display: flex;
     gap: 10px;
+    margin-left: 0;
+    transform: translatex(-1rem);
 }
 
 #account-section button {
-    padding: 0.5rem 1rem;
-    font-size: 16px;
-    border: 1px solid #007bff;
-    border-radius: 5px;
-    background-color: #007bff;
+    padding: clamp(0.5rem, 1.5vw, 1rem) clamp(0.8rem, 3vw, 1.5rem);
+    font-size: clamp(14px, 1.2vw, 18px);
+    border-radius: 10px;
     color: white;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    background-color: #33CFA5;
 }
+
+/* Hover effect */
+#account-section button:hover {
+    background-color: #2FB895;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 
 
 #logo {
