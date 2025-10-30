@@ -37,6 +37,10 @@
       </div>
     </div>
 
+    <ul id="header_ul">
+        <li>logout</li>
+    </ul>
+
 
     <div id="banner-1">
        <img src="images/chad-montano-lP5MCM6nZ5A-unsplash 1.png" alt="Category Icon">
@@ -157,19 +161,19 @@
 
         <div id="journal-main-container">
          <div id="journal-news-container">
-             <img src="images/placeholder.svg" alt="placeholder">
+             <img src="images/recepy_placholder.png" alt="placeholder">
              <h1>h1</h1>
              <p>p</p>
          </div>
  
          <div id="info-cards-container">
              <div class="info-card">
-                 <img src="images/placeholder.svg">
+                 <img src="images/recepy_placholder.png">
                  <h2>Card 1 Title</h2>
                  <p>Some information for card 1.</p>
              </div>
              <div class="info-card">
-                 <img src="images/placeholder.svg">
+                 <img src="images/recepy_placholder.png">
                  <h2>Card 2 Title</h2>
                  <p>Some information for card 2.</p>
              </div>
@@ -188,6 +192,22 @@ searchButtons.forEach(btn => {
   const container = btn.closest('.search');
   btn.addEventListener('click', () => {
     container.classList.toggle('active');
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const account = document.getElementById("acount");
+  const dropdown = document.getElementById("header_ul");
+
+  account.addEventListener("click", (e) => {
+    e.stopPropagation(); 
+    dropdown.classList.toggle("show");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!account.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.remove("show");
+    }
   });
 });
 </script>
