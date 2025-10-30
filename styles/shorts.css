@@ -169,18 +169,68 @@ body {
     transition: transform 0.3s ease;
 }
 
-.short_button:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
 .short_button:hover img {
     transform: scale(1.1);
 }
 
-#favroute:hover,
-#info:hover {
-    background-color: rgba(0, 150, 255, 0.15);
+@keyframes heart-pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
+#favroute img.animated {
+    animation: heart-pop 0.3s ease;
+}
+
+
+@keyframes info-bounce {
+    0% { transform: translateY(0) scale(1); }
+    30% { transform: translateY(-15%) scale(1.1); }
+    50% { transform: translateY(0) scale(0.95); }
+    70% { transform: translateY(-7%) scale(1.05); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+#info img.animated {
+    animation: info-bounce 0.5s ease;
+}
+
+/* Slide in from right + fade */
+@keyframes recepy-slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide out to right + fade */
+@keyframes recepy-slide-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+}
+
+/* Classes to trigger animations */
+#recepy.show {
+  animation: recepy-slide-in 0.5s ease forwards;
+}
+
+#recepy.hide {
+  animation: recepy-slide-out 0.5s ease forwards;
+}

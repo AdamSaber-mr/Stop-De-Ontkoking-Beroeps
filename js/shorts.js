@@ -79,30 +79,48 @@ function heart() {
   const container = document.getElementById("favroute");
   const img = container.querySelector("img");
 
-  const src = img.src;
-
-  if (src.includes("unfilled")) {
+  if (img.src.includes("unfilled")) {
     img.src = "images/heart.png";
   } else {
     img.src = "images/heart_unfilled.png";
   }
+
+  img.classList.add("animated");
+
+  img.addEventListener("animationend", () => {
+    img.classList.remove("animated");
+  }, { once: true });
 }
+
 
 function show_recepy_window() {
   const shorts_container = document.getElementById("short_container");
+  const recepy_container = document.getElementById("recepy");
+
+  // Hide shorts
   shorts_container.style.display = "none";
 
-  const recepy_container = document.getElementById("recepy")
+  // Show recipe container and trigger animation
   recepy_container.style.display = "block";
+  recepy_container.classList.remove("hide");
+  recepy_container.classList.add("show");
 }
 
-function hide_show_recepy_window(){
+function hide_show_recepy_window() {
   const shorts_container = document.getElementById("short_container");
-  shorts_container.style.display = "block";
+  const recepy_container = document.getElementById("recepy");
 
-  const recepy_container = document.getElementById("recepy")
-  recepy_container.style.display = "none";
+  recepy_container.classList.remove("show");
+  recepy_container.classList.add("hide");
+
+  recepy_container.addEventListener("animationend", () => {
+    recepy_container.style.display = "none";
+    shorts_container.style.display = "block";
+  }, { once: true });
+
+  
 }
+
 
 function toggle_recepy_window() {
   const recepy_container = document.getElementById("recepy");
