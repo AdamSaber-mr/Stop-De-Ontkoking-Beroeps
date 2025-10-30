@@ -1,0 +1,251 @@
+/* === CookUp Global Style Sheet === */
+/* Kleuren:
+   Mintgroen: #A8E6CF
+   Beige: #FFFDC9
+   Donkergroen (tekst/contrast): #2E2E2E
+   Accent (knoppen/hover): #FF5A5F
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #FFFDC9;
+    color: #2E2E2E;
+    line-height: 1.6;
+}
+
+/* ---------- Wrapper ---------- */
+.wrapper {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ---------- Navigatie ---------- */
+nav {
+    background-color: #A8E6CF;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    width: 130px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #2E2E2E;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #FF5A5F;
+}
+
+/* ---------- Introductie sectie ---------- */
+.index-intro {
+    text-align: center;
+    margin: 60px auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.index-intro h1 {
+    font-size: 2.2rem;
+    color: #2E2E2E;
+}
+
+.index-intro p {
+    margin-top: 10px;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+/* ---------- Categorieën sectie ---------- */
+.index-categories {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.index-categories h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+.index-categories-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.index-categories-list div {
+    background-color: #A8E6CF;
+    padding: 40px 20px;
+    border-radius: 12px;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.index-categories-list div:hover {
+    background-color: #94d9be;
+    transform: translateY(-5px);
+}
+
+.index-categories-list h3 {
+    color: #2E2E2E;
+    font-size: 1.2rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    background-color: #A8E6CF;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #2E2E2E;
+}
+
+/* ---------- Knoppen (optioneel) ---------- */
+.btn {
+    display: inline-block;
+    background-color: #FF5A5F;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e0484c;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    nav img {
+        width: 110px;
+    }
+
+    .index-intro {
+        padding: 25px;
+    }
+
+    .index-categories-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .index-categories-list {
+        grid-template-columns: 1fr;
+    }
+
+    .index-intro h1 {
+        font-size: 1.6rem;
+    }
+}
+/* === Sign Up Page Styling === */
+
+.signup-form {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 40px 50px;
+    margin: 60px auto;
+    max-width: 500px;
+    text-align: center;
+}
+
+.signup-form h2 {
+    color: #2E2E2E;
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.signup-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.signup-form label {
+    font-weight: 600;
+    color: #2E2E2E;
+    margin-bottom: 5px;
+}
+
+.signup-form input {
+    padding: 12px;
+    border: 2px solid #A8E6CF;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.signup-form input:focus {
+    border-color: #FF5A5F;
+}
+
+.signup-form button {
+    background-color: #FF5A5F;
+    color: #ffffff;
+    border: none;
+    padding: 12px 0;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.signup-form button:hover {
+    background-color: #e0484c;
+}
+
+/* Kleine tekst of foutmeldingen */
+.signup-form p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    .signup-form {
+        padding: 30px 25px;
+    }
+
+    .signup-form h2 {
+        font-size: 1.6rem;
+    }
+}
