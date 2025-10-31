@@ -17,7 +17,7 @@ include_once './header.php';
     </div>
 
     <div class="category-feed">
-        <div class="category-item" onclick="goToCategory('#')">
+        <div class="category-item" onclick="goToUrl('shorts.php?catogory_id=1')">
             <div class="category-header">
                 <img src="images/recepy_placholder.png" alt="Category Icon">
             </div>
@@ -27,7 +27,7 @@ include_once './header.php';
             </p>
         </div>
 
-        <div class="category-item">
+        <div class="category-item" onclick="goToUrl('shorts.php?catogory_id=2')">
             <div class="category-header">
                 <img src="images/placeholder.svg" alt="Category Icon">
             </div>
@@ -37,7 +37,7 @@ include_once './header.php';
             </p>
         </div>
 
-        <div class="category-item">
+        <div class="category-item" onclick="goToUrl('shorts.php?catogory_id=3')">
             <div class="category-header">
                 <img src="images/placeholder.svg" alt="Category Icon">
             </div>
@@ -47,7 +47,7 @@ include_once './header.php';
             </p>
         </div>
 
-        <div class="category-item">
+        <div class="category-item" onclick="goToUrl('shorts.php?catogory_id=4')">
             <div class="category-header">
                 <img src="images/placeholder.svg" alt="Category Icon">
             </div>

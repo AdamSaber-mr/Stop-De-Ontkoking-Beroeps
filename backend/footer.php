@@ -27,7 +27,7 @@
         });
     });
 
-    function goToCategory(url) {
+    function goToUrl(url) {
     window.location.href = url;
     }
 </script>
