@@ -52,5 +52,5 @@
 </div>
 
 <ul id="header_ul">
-    <li>logout</li>
+    <li><a href="includes/logout.inc.php">Logout</a></li>
 </ul>
