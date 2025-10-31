@@ -26,6 +26,10 @@
             }
         });
     });
+
+    function goToCategory(url) {
+    window.location.href = url;
+    }
 </script>
 
 </html>

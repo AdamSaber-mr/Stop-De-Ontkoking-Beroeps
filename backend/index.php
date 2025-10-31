@@ -17,7 +17,7 @@ include_once './header.php';
     </div>
 
     <div class="category-feed">
-        <div class="category-item">
+        <div class="category-item" onclick="goToCategory('#')">
             <div class="category-header">
                 <img src="images/recepy_placholder.png" alt="Category Icon">
             </div>
