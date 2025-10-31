@@ -32,7 +32,7 @@
     </ul>
 
     <div id="account-section">
-     <?php
+     <!-- <?php
      if (isset($_SESSION['useruid'])) {
          ?>
          <div id="account">
@@ -43,6 +43,14 @@
          echo "<button id='login-btn' onclick=\"window.location.href='login.php'\">Login</button>";
          echo "<button id='signup-btn' onclick=\"window.location.href='signup.php'\">Sign Up</button>";
      }
-     ?>
+     ?> -->`
+
+        <div id="account">
+             <img src="images/user_placeholder.png" alt="User">
+         </div>
     </div>
 </div>
+
+<ul id="header_ul">
+    <li>logout</li>
+</ul>

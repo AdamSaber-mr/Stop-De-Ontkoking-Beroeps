@@ -12,7 +12,7 @@
     });
 
     document.addEventListener("DOMContentLoaded", () => {
-        const account = document.getElementById("acount");
+        const account = document.getElementById("account");
         const dropdown = document.getElementById("header_ul");
 
         account.addEventListener("click", (e) => {

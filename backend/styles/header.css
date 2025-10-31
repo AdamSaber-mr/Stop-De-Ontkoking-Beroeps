@@ -82,7 +82,7 @@
   font-size: 1.5rem;
 }
 
-#acount {
+#account {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
@@ -92,13 +92,13 @@
   position: relative;
 }
 
-#acount img {
+#account img {
   width: 100%;
   height: auto;
   border-radius: 50%;
 }
 
-#acount:hover {
+#account:hover {
   cursor: pointer;
 }
 
@@ -151,7 +151,7 @@
 #header_ul {
   position: fixed;
   top: 80px;
-  right: 2vw;
+  right: 6vw;
   list-style: none;
   background-color: white;
   border-radius: 10px;
