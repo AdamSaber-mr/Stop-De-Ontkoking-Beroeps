@@ -1,120 +1,103 @@
-<?php /** @noinspection ALL */
+<?php
+/** @noinspection ALL */
 
-// Voor het tonen van erros
+// Voor het tonen van errors tijdens dev
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
+/* === Validatie functies (blijven hetzelfde) === */
 function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) {
-    if (empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)) {
-        $result = true;
-    }
-    else {
-        $result = false;
-    }
-    return $result;
+    return empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat);
 }
 
 function invalidUid($username) {
-    if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        $result = true;
-    } else {
-        $result = false;
-    }
-    return $result;
+    return !preg_match("/^[a-zA-Z0-9]*$/", $username);
 }
 
 function invalidEmail($email) {
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $result = true;
-    } else {
-        $result = false;
-    }
-    return $result;
+    return !filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
 function pwdMatch($pwd, $pwdRepeat) {
-    if ($pwd !== $pwdRepeat) {
-        $result = true;
-    } else {
-        $result = false;
-    }
-    return $result;
-}
-
-function uidExists($conn, $username, $email) {
-    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header('location: ../signup.php?error=stmtfailed');
-        exit();
-    }
-
-    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
-    mysqli_stmt_execute($stmt);
-
-    $resultData = mysqli_stmt_get_result($stmt);
-
-    if ($row = mysqli_fetch_assoc($resultData)) {
-        mysqli_stmt_close($stmt);
-        return $row;
-    }
-    else {
-        mysqli_stmt_close($stmt);
-        $result = false;
-        return $result;
-    }
-
-    mysqli_stmt_close($stmt);
-}
-
-function createUser($conn, $name, $email, $username, $pwd) {
-    $sql = "INSERT INTO users(usersName, usersEmail, usersUid, usersPwd) 
-            VALUES(?, ?, ?, ?);";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header('location: ../signup.php?error=stmtfailed');
-        exit();
-    }
-
-    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-
-    mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    header('location: ../signup.php?error=none');
-    exit();
+    return $pwd !== $pwdRepeat;
 }
 
 function emptyInputLogin($username, $pwd) {
-    if (empty($username) || empty($pwd)) {
-        $result = true;
-    }
-    else {
-        $result = false;
-    }
-    return $result;
+    return empty($username) || empty($pwd);
 }
 
+/* === Database functies (PDO) === */
+
+/**
+ * Controleer of een gebruikersnaam of e-mail al bestaat.
+ * Retouneert de hele rij (assoc) als gevonden, anders false.
+ */
+function uidExists($conn, $username, $email) {
+    try {
+        $sql = "SELECT * FROM users WHERE usersUid = :uid OR usersEmail = :email LIMIT 1";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([':uid' => $username, ':email' => $email]);
+        $row = $stmt->fetch();
+        return $row ? $row : false;
+    } catch (PDOException $e) {
+        // Log fout tijdens dev: error_log($e->getMessage());
+        return false;
+    }
+}
+
+/**
+ * Maak een nieuwe gebruiker aan. De role wordt automatisch 'user' meegegeven.
+ */
+function createUser($conn, $name, $email, $username, $pwd) {
+    try {
+        $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, role)
+                VALUES (:name, :email, :uid, :pwd, :role)";
+        $stmt = $conn->prepare($sql);
+        $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+        $stmt->execute([
+            ':name' => $name,
+            ':email' => $email,
+            ':uid' => $username,
+            ':pwd' => $hashedPwd,
+            ':role' => 'user'
+        ]);
+        header('location: ../signup.php?error=none');
+        exit();
+    } catch (PDOException $e) {
+        // error_log($e->getMessage());
+        header('location: ../signup.php?error=stmtfailed');
+        exit();
+    }
+}
+
+/**
+ * Login een gebruiker.
+ * Let op: bij login geven we $username mee (kan username of email zijn).
+ */
 function loginUser($conn, $username, $pwd) {
-    $uidExists = uidExists($conn, $username, $email);
+    // Gebruik uidExists: geef zowel username als email-param mee.
+    $uidExists = uidExists($conn, $username, $username);
 
     if ($uidExists === false) {
         header('location: ../login.php?error=wrongloginusername');
         exit();
     }
-    $pwdHashed = $uidExists['usersPwd']; // Pakt de password uit de database
-    $checkPwd = password_verify($pwd, $pwdHashed); // Kijk of de 2 pwd gelijk zijn aan elkaar
+
+    $pwdHashed = $uidExists['usersPwd'];
+    $checkPwd = password_verify($pwd, $pwdHashed);
 
     if ($checkPwd === false) {
         header('location: ../login.php?error=wrongloginpassword');
         exit();
-    }
-    else if ($checkPwd === true) {
-        session_start();
+    } else {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['userid'] = $uidExists['usersId'];
         $_SESSION['useruid'] = $uidExists['usersUid'];
+        // Zorg dat 'role' uit DB bestaat (users.role)
+        $_SESSION['role'] = isset($uidExists['role']) ? $uidExists['role'] : 'user';
         header('location: ../index.php');
         exit();
     }

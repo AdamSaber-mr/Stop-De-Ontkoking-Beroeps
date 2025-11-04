@@ -1,5 +1,5 @@
 <?php
-// Voor het tonen van erros
+// Voor het tonen van errors
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -21,8 +21,7 @@ if (isset($_POST['submit'])) {
 
     loginUser($conn, $username, $pwd);
 
-}
-else {
+} else {
     header('location: ../login.php');
     exit();
 }
