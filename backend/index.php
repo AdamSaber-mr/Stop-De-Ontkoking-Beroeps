@@ -10,13 +10,13 @@ include_once './header.php';
 <div class="category-container">
     <div class="title-search-container">
         <h1>Category</h1>
-        <div class="search">
+        <div class="search" id="catogory_search">
             <button class="search-btn"><img src="images/magnifying-glass.png"></button>
-            <input type="text" class="search-input" placeholder="Search..." />
+            <input type="text" id="catogory_search_input" class="search-input" placeholder="Search..." />
         </div>
     </div>
 
-    <div class="category-feed">
+    <div class="category-feed" id="catogory_items">
         <div class="category-item" onclick="goToUrl('shorts.php?catogory_id=1')">
             <div class="category-header">
                 <img src="images/recepy_placholder.png" alt="Category Icon">
@@ -140,6 +140,8 @@ include_once './header.php';
         </div>
     </div>
 </div>
+
+<script src="./js/search.js"></script>
 
 <?php
 include_once './footer.php';
