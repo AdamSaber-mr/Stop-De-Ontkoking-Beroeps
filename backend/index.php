@@ -19,41 +19,41 @@ include_once './header.php';
     <div class="category-feed" id="catogory_items">
         <div class="category-item" onclick="goToUrl('shorts.php?catogory_id=1')">
             <div class="category-header">
-                <img src="images/recepy_placholder.png" alt="Category Icon">
+                <img src="images/catogories/breakfast.jpg" alt="Category Icon">
             </div>
             <h2 class="category-title">Breakfast</h2>
             <p class="category-description">
-                This is a short description of the category or item. It gives users a quick idea of what it is about.
+                Breakfast is the first meal of the day, providing energy, boosting focus, and preparing the body and mind for daily activities.
             </p>
         </div>
 
         <div class="category-item" onclick="goToUrl('shorts.php?catogory_id=2')">
             <div class="category-header">
-                <img src="images/placeholder.svg" alt="Category Icon">
+                <img src="images/catogories/lunch.jpg" alt="Category Icon">
             </div>
             <h2 class="category-title">Lunch</h2>
             <p class="category-description">
-                This is a short description of the category or item. It gives users a quick idea of what it is about.
+                Lunch is a midday meal that refuels the body, maintains energy levels, and supports focus and productivity for the rest of the day.
             </p>
         </div>
 
         <div class="category-item" onclick="goToUrl('shorts.php?catogory_id=3')">
             <div class="category-header">
-                <img src="images/placeholder.svg" alt="Category Icon">
+                <img src="images/catogories/dinner.jpg" alt="Category Icon">
             </div>
             <h2 class="category-title">Dinner</h2>
             <p class="category-description">
-                This is a short description of the category or item. It gives users a quick idea of what it is about.
+                Dinner is the evening meal that nourishes the body, promotes relaxation, and provides an opportunity to connect and unwind after the day.
             </p>
         </div>
 
         <div class="category-item" onclick="goToUrl('shorts.php?catogory_id=4')">
             <div class="category-header">
-                <img src="images/placeholder.svg" alt="Category Icon">
+                <img src="images/catogories/snacks.jpg" alt="Category Icon">
             </div>
             <h2 class="category-title">Snacks</h2>
             <p class="category-description">
-                This is a short description of the category or item. It gives users a quick idea of what it is about.
+                Snacks are small, quick bites that satisfy hunger, boost energy, and keep you focused between main meals.
             </p>
         </div>
     </div>
