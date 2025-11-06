@@ -6,10 +6,16 @@
 
     searchButtons.forEach(btn => {
         const container = btn.closest('.search');
+        const input = container.querySelector(".search-input");
+
+        console.log(input)
+    
         btn.addEventListener('click', () => {
             container.classList.toggle('active');
+            input.focus();
         });
     });
+
 
     document.addEventListener("DOMContentLoaded", () => {
         const account = document.getElementById("account");
