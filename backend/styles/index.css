@@ -28,24 +28,18 @@ body {
 
 #banner-1 h1 {
     position: absolute;
-    top: 20%;
-    left: 15%;
-    font-size: clamp(3rem, 8vw, 6rem);
-    color: white;
+    left: 50%;
+    top: 40%;
+    font-size: clamp(3rem, 4vw, 6rem);
+    max-width: 50vw;
     text-transform: uppercase;
     letter-spacing: 4px;
     text-align: center;
-    font-family: "Poppins", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
-
-    background: linear-gradient(90deg, #fff1e6, #ffd6c4);
+    background-color: white;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-
-    /* text-shadow: 0 0 20px rgba(238, 9, 121, 0.5); */
-
-
     animation: fadeInUp 0.8s ease-out forwards;
     opacity: 0;
 }
@@ -99,34 +93,66 @@ body {
 
 #banner-2 h1 {
     position: absolute;
-    top: 20%;
+    bottom: -10%;
     left: 15%;
-    font-size: clamp(2rem, 6vw, 4rem);
-    color: white;
+    max-width: 20vw;
+    font-size: clamp(4rem, 4vw, 6rem);
     text-transform: uppercase;
     letter-spacing: 4px;
     text-align: center;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
-
-    background: linear-gradient(90deg, #fff1e6, #ffd6c4);
+    background-color: white;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-align: left;
 
     animation: fadeInUp 0.8s ease-out forwards;
     opacity: 0;
     transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
+#banner-2 h1 .highlight {
+    background-color: rgb(169, 242, 215);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+#banner-1 h1 .highlight,
+#banner-1 h1 .highlight2 {
+    background-color: rgb(169, 242, 215);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#banner-2 button {
+    position: absolute;
+    right: 50px;
+    bottom: 40px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white;
+    background-color: rgb(148, 224, 199);; 
+    border: none;
+    border-radius: 4px;
+}
+
+#banner-2 button:hover{
+    cursor: pointer;
+}
+
 /* Hover Effects */
 #banner-2:hover img {
     transform: scale(1.05); 
-    filter: brightness(1.1); 
 }
 
 #banner-2:hover h1 {
     transform: translateY(-5px); 
-    text-shadow: 0 0 15px rgba(255, 214, 196, 0.7), 0 0 25px rgba(255, 214, 196, 0.5);
 }
 
 /* --- Responsive: Banner 2 --- */

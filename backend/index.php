@@ -1,10 +1,14 @@
 <?php
 include_once './header.php';
 ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
 <div id="banner-1">
-    <img src="images/chad-montano-lP5MCM6nZ5A-unsplash 1.png" alt="Category Icon">
-    <h1>h1</h1>
+    <img src="images/pngtree-delicious-japanese-chicken-noodles-savory-delights-served-in-a-vibrant-red-picture-image_15225021.jpg">
+    <h1>
+     From <span class="highlight">Cravings</span> to <span class="highlight2">Creations</span>
+    </h1>
 </div>
 
 <div class="category-container">
@@ -60,8 +64,9 @@ include_once './header.php';
 </div>
 
 <div id="banner-2">
-    <img src="images/odiseo-castrejon-1SPu0KT-Ejg-unsplash 1.png">
-    <h1>h1</h1>
+    <img src="images/duties-of-a-chef.jpg">
+    <h1>Get <span class="highlight">Cooking!</span></h1>
+    <button>Explore Recipes <i class="fas fa-utensils"></i></button>
 </div>
 
 <div class="category-container">
