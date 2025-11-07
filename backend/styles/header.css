@@ -144,6 +144,10 @@
   display: none;
 }
 
+#side_menu{
+  display: none;
+}
+
 /* header media qerry */
 @media (max-width: 690px) { 
   html, body {
