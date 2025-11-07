@@ -5,7 +5,7 @@ include_once './header.php';
 
 
 <div id="banner-1">
-    <img src="images/pngtree-delicious-japanese-chicken-noodles-savory-delights-served-in-a-vibrant-red-picture-image_15225021.jpg">
+    <img src="images/4e66cb90-fd12-4254-95ef-ad76a4dece73.jpg">
     <h1>
      From <span class="highlight">Cravings</span> to <span class="highlight2">Creations</span>
     </h1>
