@@ -2,15 +2,7 @@
  session_start();
 ?>
 
-<script>
-const hamburger = document.getElementById('header_hamburger');
-const navMenu = document.getElementById('nav-menu');
 
-hamburger.addEventListener('click', () => {
-    navMenu.classList.toggle('show');      // toggle the menu
-    hamburger.classList.toggle('open');    // animate the spans
-});
-</script>
 
 
 <!DOCTYPE html>
@@ -67,8 +59,32 @@ hamburger.addEventListener('click', () => {
     </div>
 </div>
 
+<div id="side_menu">
+    <ul class="nav-menu">
+        <li><a href="index.php">Home</a></li>
+        <li>Browse</li>
+        <li>Watch</li>
+        <?php
+        if (!isset($_SESSION['useruid'])) {
+            echo "<li><a href='login.php'>Login</a></li>";
+            echo "<li><a href='signup.php'>Sign Up</a></li>";
+        }
+        ?>
+    </ul>
+</div>
+
 
 
 <ul id="header_ul">
     <li><a href="includes/logout.inc.php">Logout</a></li>
 </ul>
+
+<script>
+const hamburger = document.getElementById('header_hamburger');
+const sideMenu = document.getElementById('side_menu');
+
+hamburger.addEventListener('click', () => {
+    sideMenu.classList.toggle('show'); 
+    hamburger.classList.toggle('open');
+});
+</script>
