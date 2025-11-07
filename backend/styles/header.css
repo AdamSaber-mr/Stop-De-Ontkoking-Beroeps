@@ -140,12 +140,57 @@
   width: 60px;
 }
 
+#mobile-header #logo {
+  display: none;
+}
+
 /* header media qerry */
-@media (max-width: 555px) {
-  #header * {
+@media (max-width: 690px) { 
+  html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      overflow-x: hidden;
+  }
+
+  #header {
     display: none;
   }
+
+  #mobile-header {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #a9f2d7;
+  }
+
+  #mobile-header #logo {
+    display: block;
+    width: 50px;
+    margin-right: 10px;
+  }
+
+  #header_hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    cursor: pointer;
+    align-items: flex-start;
+    padding: 5px 0; 
+  }
+
+  #header_hamburger span {
+    display: block;
+    height: 3px;
+    width: 30px; 
+    max-width: 40px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease; 
+  }
 }
+
 
 /* Header */
 #header_ul {

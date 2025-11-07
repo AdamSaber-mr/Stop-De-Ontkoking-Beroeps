@@ -2,6 +2,17 @@
  session_start();
 ?>
 
+<script>
+const hamburger = document.getElementById('header_hamburger');
+const navMenu = document.getElementById('nav-menu');
+
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');      // toggle the menu
+    hamburger.classList.toggle('open');    // animate the spans
+});
+</script>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +57,17 @@
      ?>
     </div>
 </div>
+
+<div id="mobile-header">
+    <img id="logo" src="images/logo.png" alt="Logo">
+    <div id="header_hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+
 
 <ul id="header_ul">
     <li><a href="includes/logout.inc.php">Logout</a></li>
