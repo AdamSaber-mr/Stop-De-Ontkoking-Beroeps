@@ -66,6 +66,10 @@
     cursor: pointer;
 }
 
+#banner-2:hover{
+    cursor: default;
+}
+
 #banner-2:hover img {
     transform: scale(1.05); 
 }
