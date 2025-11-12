@@ -24,9 +24,7 @@
     }
 
     #journal-news-container {
-        width: clamp(90%, 95%, 100%); 
-        max-width: 500px;
-        margin: 0 auto 1.5rem auto; 
+    width: clamp(300px, 90%, 600px); 
     }
 
     #info-cards-container {
@@ -38,8 +36,6 @@
     }
 
     .info-card {
-        width: clamp(90%, 95%, 400px); 
-        height: auto; 
         margin: 0 auto;
     }
 
