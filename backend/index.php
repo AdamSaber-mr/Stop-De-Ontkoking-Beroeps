@@ -126,21 +126,21 @@ include_once './header.php';
 
     <div id="journal-main-container">
         <div id="journal-news-container">
-            <img src="images/recepy_placholder.png" alt="placeholder">
-            <h1>h1</h1>
-            <p>p</p>
+            <img src="images/journal/sushi.jpg" alt="placeholder">
+            <h1>Tokyo, Japan 🇯🇵 – Sushi Reinvented</h1>
+            <p>Discover the art of sushi beyond the classics. Local chefs are experimenting with fusion rolls featuring tropical fruits, truffle oil, and even wagyu beef. Tip: Try the limited “Cherry Blossom Roll” before it’s gone!</p>
         </div>
 
         <div id="info-cards-container">
             <div class="info-card">
-                <img src="images/recepy_placholder.png">
-                <h2>Card 1 Title</h2>
-                <p>Some information for card 1.</p>
+                <img src="images/journal/tagine.jpg">
+                <h2>Marrakech, Morocco 🇲🇦 – Spice Symphony</h2>
+                <p>Naples is calling pizza lovers! From the traditional Margherita baked in wood-fired ovens to modern takes with burrata and prosciutto, the city proves pizza is more than a meal—it’s an experience.</p>
             </div>
             <div class="info-card">
-                <img src="images/recepy_placholder.png">
-                <h2>Card 2 Title</h2>
-                <p>Some information for card 2.</p>
+                <img src="images/journal/taco_truck.jpg">
+                <h2>Mexico City, Mexico 🇲🇽 – Street Food Wonders</h2>
+                <p>Tacos aren’t just food here—they’re a story in every bite. From al pastor served at sunrise to churros dusted with chili chocolate at sunset, Mexico City’s street food scene is vibrant, bold, and unforgettable.</p>
             </div>
         </div>
     </div>
