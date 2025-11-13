@@ -3,407 +3,232 @@ $category_id = $_GET['catogory_id'];
 
 include_once './header.php';
 
+
 $data = [
     // Category 1 – Breakfast
     [
         "category_id" => "1",
-        "name" => "Sunrise Smoothie",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Sunrise Smoothie Recipe",
-            "description" => "Blend fresh fruits with yogurt for a refreshing morning boost.",
-            "ingredients" => [
-                "1 banana",
-                "1/2 cup strawberries",
-                "1/2 cup yogurt",
-                "1 tsp honey"
-            ]
+        "title" => "Berry Oatmeal Bowl",
+        "img" => "breakfast1.png",
+        "description" => "Warm oatmeal topped with fresh berries and honey.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Cook oats in milk over medium heat until soft."],
+            ["stepNumber" => 2, "instructions" => "Add a drizzle of honey and stir well."],
+            ["stepNumber" => 3, "instructions" => "Top with fresh berries before serving."]
+        ],
+        "ingredients" => [
+            "1/2 cup oats",
+            "1 cup milk",
+            "1 tbsp honey",
+            "1/4 cup mixed berries"
         ]
     ],
     [
         "category_id" => "1",
-        "name" => "Avocado Toast Delight",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Avocado Toast Recipe",
-            "description" => "Creamy avocado on whole-grain bread with a sprinkle of chili flakes.",
-            "ingredients" => [
-                "1 slice whole-grain bread",
-                "1/2 avocado",
-                "Pinch of chili flakes",
-                "Salt to taste"
-            ]
+        "title" => "Avocado Toast",
+        "img" => "breakfast2.png",
+        "description" => "Toasted bread topped with creamy avocado and chili flakes.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Toast the bread slice until golden brown."],
+            ["stepNumber" => 2, "instructions" => "Mash avocado with salt and lemon juice."],
+            ["stepNumber" => 3, "instructions" => "Spread avocado on toast and sprinkle chili flakes."]
+        ],
+        "ingredients" => [
+            "1 slice whole-grain bread",
+            "1/2 avocado",
+            "Pinch of chili flakes",
+            "Salt to taste"
         ]
     ],
     [
         "category_id" => "1",
-        "name" => "Berry Oat Bowl",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Berry Oat Bowl Recipe",
-            "description" => "Cook oats and top with fresh berries and nuts for a healthy start.",
-            "ingredients" => [
-                "1/2 cup oats",
-                "1/2 cup milk",
-                "1/4 cup mixed berries",
-                "1 tbsp almonds"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "1",
-        "name" => "Tropical Yogurt Parfait",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Tropical Yogurt Parfait",
-            "description" => "Layer yogurt, granola, and tropical fruits for a quick breakfast.",
-            "ingredients" => [
-                "1/2 cup yogurt",
-                "1/4 cup granola",
-                "1/4 cup mango chunks",
-                "1 tsp chia seeds"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "1",
-        "name" => "Spinach & Egg Wrap",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Spinach & Egg Wrap Recipe",
-            "description" => "Scramble eggs with fresh spinach and wrap in a whole wheat tortilla.",
-            "ingredients" => [
-                "1 whole wheat tortilla",
-                "2 eggs",
-                "1/2 cup spinach",
-                "Salt & pepper"
-            ]
+        "title" => "Yogurt Parfait",
+        "img" => "breakfast3.png",
+        "description" => "Layered yogurt, granola, and fruit for a fresh morning treat.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Add yogurt to a glass or bowl."],
+            ["stepNumber" => 2, "instructions" => "Layer with granola and sliced fruit."],
+            ["stepNumber" => 3, "instructions" => "Drizzle honey and serve chilled."]
+        ],
+        "ingredients" => [
+            "1/2 cup yogurt",
+            "1/4 cup granola",
+            "1/4 cup fruit slices",
+            "1 tsp honey"
         ]
     ],
 
     // Category 2 – Lunch
     [
         "category_id" => "2",
-        "name" => "Mediterranean Quinoa Salad",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Mediterranean Quinoa Salad",
-            "description" => "Mix quinoa with tomatoes, cucumber, and feta for a light lunch.",
-            "ingredients" => [
-                "1 cup cooked quinoa",
-                "1/2 cup cherry tomatoes",
-                "1/4 cup cucumber",
-                "2 tbsp feta cheese",
-                "Olive oil & lemon juice"
-            ]
+        "title" => "Chicken Caesar Wrap",
+        "img" => "lunch1.png",
+        "description" => "Grilled chicken and crisp lettuce in a soft tortilla wrap.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Grill chicken breast until cooked through."],
+            ["stepNumber" => 2, "instructions" => "Slice chicken and mix with Caesar dressing."],
+            ["stepNumber" => 3, "instructions" => "Wrap in a tortilla with lettuce and cheese."]
+        ],
+        "ingredients" => [
+            "1 tortilla",
+            "100g grilled chicken",
+            "Lettuce leaves",
+            "Caesar dressing",
+            "Grated Parmesan"
         ]
     ],
     [
         "category_id" => "2",
-        "name" => "Grilled Veggie Wrap",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Grilled Veggie Wrap Recipe",
-            "description" => "Roasted veggies in a tortilla with hummus for a filling lunch.",
-            "ingredients" => [
-                "1 whole wheat tortilla",
-                "1/2 cup roasted bell peppers",
-                "1/4 cup zucchini slices",
-                "2 tbsp hummus"
-            ]
+        "title" => "Mediterranean Quinoa Salad",
+        "img" => "lunch2.png",
+        "description" => "Refreshing salad with quinoa, feta, cucumber, and tomatoes.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Cook quinoa and let it cool."],
+            ["stepNumber" => 2, "instructions" => "Chop vegetables and mix with quinoa."],
+            ["stepNumber" => 3, "instructions" => "Add feta cheese and drizzle with olive oil and lemon juice."]
+        ],
+        "ingredients" => [
+            "1 cup cooked quinoa",
+            "1/2 cup cherry tomatoes",
+            "1/4 cup cucumber",
+            "2 tbsp feta cheese",
+            "Olive oil & lemon juice"
         ]
     ],
     [
         "category_id" => "2",
-        "name" => "Chicken Pesto Pasta",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Chicken Pesto Pasta",
-            "description" => "Toss cooked pasta with grilled chicken and homemade pesto.",
-            "ingredients" => [
-                "200g pasta",
-                "100g grilled chicken",
-                "2 tbsp pesto",
-                "Parmesan for topping"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "2",
-        "name" => "Sweet Potato & Black Bean Bowl",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Sweet Potato & Black Bean Bowl",
-            "description" => "Roasted sweet potatoes with black beans and avocado slices.",
-            "ingredients" => [
-                "1 cup roasted sweet potatoes",
-                "1/2 cup black beans",
-                "1/4 avocado",
-                "1 tsp lime juice"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "2",
-        "name" => "Caprese Sandwich",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Caprese Sandwich Recipe",
-            "description" => "Fresh mozzarella, tomato, and basil on ciabatta bread.",
-            "ingredients" => [
-                "2 slices ciabatta",
-                "2 slices mozzarella",
-                "3 tomato slices",
-                "Fresh basil leaves",
-                "Balsamic drizzle"
-            ]
+        "title" => "Grilled Veggie Sandwich",
+        "img" => "lunch3.png",
+        "description" => "A warm sandwich with grilled vegetables and pesto spread.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Grill sliced bell peppers and zucchini."],
+            ["stepNumber" => 2, "instructions" => "Spread pesto on bread slices."],
+            ["stepNumber" => 3, "instructions" => "Assemble sandwich with veggies and grill briefly."]
+        ],
+        "ingredients" => [
+            "2 slices bread",
+            "1/2 cup grilled vegetables",
+            "1 tbsp pesto",
+            "1 slice cheese"
         ]
     ],
 
-    // Category 3 – Dinner
+    // 🍛 Category 3 – Dinner
     [
         "category_id" => "3",
-        "name" => "Lemon Herb Salmon",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Lemon Herb Salmon",
-            "description" => "Baked salmon with herbs and lemon slices for a light dinner.",
-            "ingredients" => [
-                "150g salmon fillet",
-                "1 tsp olive oil",
-                "Lemon slices",
-                "Fresh dill"
-            ]
+        "title" => "Lemon Herb Salmon",
+        "img" => "dinner1.png",
+        "description" => "Baked salmon with herbs and lemon slices for a light meal.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Preheat oven to 200°C (400°F)."],
+            ["stepNumber" => 2, "instructions" => "Place salmon on a baking tray lined with parchment paper."],
+            ["stepNumber" => 3, "instructions" => "Top with olive oil, lemon slices, and dill, then bake for 15 minutes."]
+        ],
+        "ingredients" => [
+            "150g salmon fillet",
+            "1 tsp olive oil",
+            "Lemon slices",
+            "Fresh dill"
         ]
     ],
     [
         "category_id" => "3",
-        "name" => "Stuffed Bell Peppers",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Stuffed Bell Peppers",
-            "description" => "Bell peppers stuffed with rice, veggies, and cheese.",
-            "ingredients" => [
-                "2 bell peppers",
-                "1/2 cup cooked rice",
-                "1/4 cup diced tomatoes",
-                "2 tbsp shredded cheese"
-            ]
+        "title" => "Garlic Shrimp Stir Fry",
+        "img" => "dinner2.png",
+        "description" => "Shrimp stir-fried with vegetables and a garlic soy sauce.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Heat oil in a pan and add garlic."],
+            ["stepNumber" => 2, "instructions" => "Add shrimp and cook until pink."],
+            ["stepNumber" => 3, "instructions" => "Add vegetables and stir-fry with soy sauce."]
+        ],
+        "ingredients" => [
+            "100g shrimp",
+            "1/2 cup mixed vegetables",
+            "1 tbsp soy sauce",
+            "1 tsp minced garlic"
         ]
     ],
     [
         "category_id" => "3",
-        "name" => "Garlic Shrimp Stir Fry",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Garlic Shrimp Stir Fry",
-            "description" => "Quick stir-fry of shrimp with veggies and garlic sauce.",
-            "ingredients" => [
-                "100g shrimp",
-                "1/2 cup broccoli",
-                "1/4 cup bell peppers",
-                "1 tsp garlic sauce"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "3",
-        "name" => "Quinoa & Veggie Bowl",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Quinoa & Veggie Bowl",
-            "description" => "Protein-packed quinoa with roasted vegetables for dinner.",
-            "ingredients" => [
-                "1 cup cooked quinoa",
-                "1/2 cup roasted vegetables",
-                "1 tsp olive oil",
-                "Pinch of salt"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "3",
-        "name" => "Chicken & Spinach Skillet",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Chicken & Spinach Skillet",
-            "description" => "Sautéed chicken with spinach and herbs for a quick dinner.",
-            "ingredients" => [
-                "150g chicken breast",
-                "1 cup spinach",
-                "1 tsp olive oil",
-                "Garlic & herbs"
-            ]
+        "title" => "Chicken & Spinach Skillet",
+        "img" => "dinner3.png",
+        "description" => "Sautéed chicken with fresh spinach in a garlic butter sauce.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Cook chicken pieces in a skillet with olive oil."],
+            ["stepNumber" => 2, "instructions" => "Add garlic and butter, then stir in spinach until wilted."],
+            ["stepNumber" => 3, "instructions" => "Season with salt and pepper to taste."]
+        ],
+        "ingredients" => [
+            "150g chicken breast",
+            "1 cup spinach",
+            "1 tbsp butter",
+            "1 tsp minced garlic"
         ]
     ],
 
     // Category 4 – Snacks
     [
         "category_id" => "4",
-        "name" => "Nutty Energy Bites",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Nutty Energy Bites",
-            "description" => "Quick bites made with nuts, oats, and honey for a boost.",
-            "ingredients" => [
-                "1 cup oats",
-                "1/2 cup peanut butter",
-                "2 tbsp honey",
-                "1/4 cup chopped almonds"
-            ]
+        "title" => "Nutty Energy Bites",
+        "img" => "snack1.png",
+        "description" => "Healthy bites made from oats, honey, and peanut butter.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Mix oats, peanut butter, and honey in a bowl."],
+            ["stepNumber" => 2, "instructions" => "Roll mixture into small balls."],
+            ["stepNumber" => 3, "instructions" => "Chill for 20 minutes before serving."]
+        ],
+        "ingredients" => [
+            "1 cup oats",
+            "1/2 cup peanut butter",
+            "2 tbsp honey"
         ]
     ],
     [
         "category_id" => "4",
-        "name" => "Veggie Chips",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Veggie Chips Recipe",
-            "description" => "Baked veggie slices seasoned lightly for a healthy snack.",
-            "ingredients" => [
-                "1 cup sweet potato slices",
-                "1 cup zucchini slices",
-                "1 tsp olive oil",
-                "Salt & pepper"
-            ]
+        "title" => "Spiced Popcorn",
+        "img" => "snack2.png",
+        "description" => "Air-popped popcorn tossed with paprika and olive oil.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Air-pop the popcorn kernels."],
+            ["stepNumber" => 2, "instructions" => "Toss with olive oil, salt, and paprika."],
+            ["stepNumber" => 3, "instructions" => "Serve warm and crunchy."]
+        ],
+        "ingredients" => [
+            "2 cups popcorn",
+            "1 tsp olive oil",
+            "1/4 tsp paprika",
+            "Pinch of salt"
         ]
     ],
     [
         "category_id" => "4",
-        "name" => "Mini Caprese Skewers",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Mini Caprese Skewers",
-            "description" => "Tomato, mozzarella, and basil on skewers for easy snacking.",
-            "ingredients" => [
-                "Cherry tomatoes",
-                "Mini mozzarella balls",
-                "Fresh basil leaves",
-                "Balsamic glaze"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "4",
-        "name" => "Spiced Popcorn",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Spiced Popcorn",
-            "description" => "Air-popped popcorn tossed with light spices for flavor.",
-            "ingredients" => [
-                "2 cups popcorn",
-                "1/2 tsp paprika",
-                "1/4 tsp salt",
-                "1 tsp olive oil"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "4",
-        "name" => "Fruit & Yogurt Cups",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Fruit & Yogurt Cups",
-            "description" => "Layered yogurt with fresh fruit for a sweet snack.",
-            "ingredients" => [
-                "1/2 cup yogurt",
-                "1/4 cup mixed berries",
-                "1 tsp honey",
-                "1 tbsp granola"
-            ]
-        ]
-    ],
-
-    // Category 5 – Desserts
-    [
-        "category_id" => "5",
-        "name" => "Chocolate Banana Muffin",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Chocolate Banana Muffin",
-            "description" => "Moist muffins with ripe bananas and chocolate chips.",
-            "ingredients" => [
-                "1 banana",
-                "100g flour",
-                "50g sugar",
-                "1 egg",
-                "50g chocolate chips"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "5",
-        "name" => "Berry Yogurt Parfait",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Berry Yogurt Parfait",
-            "description" => "Layer yogurt with berries and granola for a sweet treat.",
-            "ingredients" => [
-                "1/2 cup yogurt",
-                "1/4 cup berries",
-                "1 tbsp granola",
-                "1 tsp honey"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "5",
-        "name" => "Mini Chocolate Tart",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Mini Chocolate Tart",
-            "description" => "Rich chocolate tart in a small, decadent portion.",
-            "ingredients" => [
-                "50g chocolate",
-                "30g flour",
-                "20g butter",
-                "1 tsp sugar"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "5",
-        "name" => "Coconut Macaroons",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Coconut Macaroons",
-            "description" => "Chewy coconut treats perfect for dessert lovers.",
-            "ingredients" => [
-                "100g shredded coconut",
-                "50g condensed milk",
-                "1 egg white"
-            ]
-        ]
-    ],
-    [
-        "category_id" => "5",
-        "name" => "Lemon Drizzle Cake",
-        "img" => "chad-montano-lP5MCM6nZ5A-unsplash 1.png",
-        "recipe" => [
-            "title" => "Lemon Drizzle Cake",
-            "description" => "Light and zesty cake topped with a sweet lemon glaze.",
-            "ingredients" => [
-                "100g flour",
-                "50g sugar",
-                "50g butter",
-                "1 egg",
-                "1 tsp lemon zest"
-            ]
+        "title" => "Fruit & Yogurt Cups",
+        "img" => "snack3.png",
+        "description" => "Small cups filled with yogurt and fresh fruits for a light snack.",
+        "steps" => [
+            ["stepNumber" => 1, "instructions" => "Spoon yogurt into a cup."],
+            ["stepNumber" => 2, "instructions" => "Add chopped fruits on top."],
+            ["stepNumber" => 3, "instructions" => "Sprinkle granola and drizzle honey before serving."]
+        ],
+        "ingredients" => [
+            "1/2 cup yogurt",
+            "1/4 cup mixed fruits",
+            "1 tbsp granola",
+            "1 tsp honey"
         ]
     ]
 ];
-
-
 
 $item_to_add = [];
 
 foreach ($data as $item) {
     $item_category_id = (int)$item["category_id"];
 
-    if($item_category_id == $category_id){
-      $item_to_add[] = $item;
+    if ($item_category_id == $category_id) {
+        $item_to_add[] = $item;
     }
 }
+
 ?>
 
 <script>
@@ -419,8 +244,8 @@ foreach ($data as $item) {
         <?php foreach ($item_to_add as $item): ?>
             <?php $active_class = $first ? "active" : ""; ?>
             <div class="short <?= $active_class ?>">
-                <h1><?= htmlspecialchars($item["name"]) ?></h1>
-                <img src="images/<?= htmlspecialchars($item["img"]) ?>">
+                <h1><?= htmlspecialchars($item["title"]) ?></h1>
+                <img src="images/<?= htmlspecialchars($item["img"]) ?>" alt="<?= htmlspecialchars($item["title"]) ?>">
             </div>
             <?php $first = false; ?>
         <?php endforeach; ?>
@@ -428,14 +253,31 @@ foreach ($data as $item) {
 
     <div id="recepy">
         <?php if (!empty($item_to_add)): ?>
-            <?php $recipe = $item_to_add[0]["recipe"]; ?>
+            <?php 
+                // use the first recipe as default display
+                $recipe = $item_to_add[0];
+            ?>
             <h2><?= htmlspecialchars($recipe["title"]) ?></h2>
             <p><?= htmlspecialchars($recipe["description"]) ?></p>
+
+            <h3>Ingredients</h3>
             <ul>
                 <?php foreach ($recipe["ingredients"] as $ingredient): ?>
                     <li><?= htmlspecialchars($ingredient) ?></li>
                 <?php endforeach; ?>
             </ul>
+
+            <?php if (!empty($recipe["steps"])): ?>
+                <h3>Steps</h3>
+                <ol>
+                    <?php foreach ($recipe["steps"] as $step): ?>
+                        <li>
+                            <strong>Step <?= htmlspecialchars($step["stepNumber"]) ?>:</strong>
+                            <?= htmlspecialchars($step["instructions"]) ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ol>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 
@@ -449,5 +291,6 @@ foreach ($data as $item) {
         </div>
     </div>
 </div>
+
 
 <script src="js/shorts.js"></script>
