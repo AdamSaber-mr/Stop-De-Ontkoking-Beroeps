@@ -1,12 +1,12 @@
 <?php
 $category_id = $_GET['catogory_id'];
-
-include_once './header.php';
+$recept_id = $_GET['recept_id'];
 
 
 $data = [
     // Category 1 – Breakfast
     [
+        "id" => "1",
         "category_id" => "1",
         "title" => "Berry Oatmeal Bowl",
         "img" => "recepten/breakfast/Triple-Berry-Oatmeal-Breakfast-Bowl-3.jpg",
@@ -24,6 +24,7 @@ $data = [
         ]
     ],
     [
+        "id" => "2",
         "category_id" => "1",
         "title" => "Avocado Toast",
         "img" => "recepten/breakfast/AvocadoToastwithEggFranceC4x3-bb87e3bbf1944657b7db35f1383fabdb.jpg",
@@ -41,6 +42,7 @@ $data = [
         ]
     ],
     [
+        "id" => "3",
         "category_id" => "1",
         "title" => "Yogurt Parfait",
         "img" => "recepten/breakfast/Greek-Yogurt-Parfait-Recipe.jpg",
@@ -60,6 +62,7 @@ $data = [
 
     // Category 2 – Lunch
     [
+        "id" => "4",
         "category_id" => "2",
         "title" => "Chicken Caesar Wrap",
         "img" => "recepten/lunch/Chicken-Caesar-Wraps-14.jpg",
@@ -78,6 +81,7 @@ $data = [
         ]
     ],
     [
+        "id" => "5",
         "category_id" => "2",
         "title" => "Mediterranean Quinoa Salad",
         "img" => "recepten/lunch/med-quinoa-salad-process-1-ingredients.jpeg",
@@ -96,6 +100,7 @@ $data = [
         ]
     ],
     [
+        "id" => "6",
         "category_id" => "2",
         "title" => "Grilled Veggie Sandwich",
         "img" => "recepten/lunch/Grilled-Vegetable-Burrata-Sandwich-with-Lemon-Thyme-Honey-Mustard-1.jpg",
@@ -115,6 +120,7 @@ $data = [
 
     // 🍛 Category 3 – Dinner
     [
+        "id" => "7",
         "category_id" => "3",
         "title" => "Lemon Herb Salmon",
         "img" => "recepten/dinner/KALEJUNKIE-SHEET-PAN-LEMON-HERB-SALMON-3.jpg",
@@ -132,6 +138,7 @@ $data = [
         ]
     ],
     [
+        "id" => "8",
         "category_id" => "3",
         "title" => "Garlic Shrimp Stir Fry",
         "img" => "recepten/dinner/Garlic-Shrimp-Stir-Fry-14.webp",
@@ -149,6 +156,7 @@ $data = [
         ]
     ],
     [
+        "id" => "9",
         "category_id" => "3",
         "title" => "Chicken & Spinach Skillet",
         "img" => "recepten/dinner/creamy-skillet-chicken-with-spinach-mushrooms-7933679-3x2-1-56a3134d70b34e9fb2c7d675a0e301e8.jpg",
@@ -168,6 +176,7 @@ $data = [
 
     // Category 4 – Snacks
     [
+        "id" => "10",
         "category_id" => "4",
         "title" => "Nutty Energy Bites",
         "img" => "recepten/snacks/Nutty-Energy-Bites-2.jpg",
@@ -184,6 +193,7 @@ $data = [
         ]
     ],
     [
+        "id" => "11",
         "category_id" => "4",
         "title" => "Spiced Popcorn",
         "img" => "recepten/snacks/spiced_popcorn.jpg",
@@ -201,6 +211,7 @@ $data = [
         ]
     ],
     [
+        "id" => "12",
         "category_id" => "4",
         "title" => "Fruit & Yogurt Cups",
         "img" => "recepten/snacks/Fruit-Yogurt-Parfait-11.jpg",
@@ -219,16 +230,33 @@ $data = [
     ]
 ];
 
+
 $item_to_add = [];
 
-foreach ($data as $item) {
-    $item_category_id = (int)$item["category_id"];
-
-    if ($item_category_id == $category_id) {
-        $item_to_add[] = $item;
+if($category_id){
+    foreach ($data as $item) {
+        $item_category_id = (int)$item["category_id"];
+    
+        if ($item_category_id == $category_id) {
+            $item_to_add[] = $item;
+        }
     }
 }
 
+if($recept_id){
+    foreach ($data as $item) {
+        $id = (int)$item["id"];
+
+        if($id == $recept_id){
+            array_unshift($item_to_add, $item);
+        }else{
+            $item_to_add[] = $item;
+        }
+    }
+
+}
+
+include_once './header.php';
 ?>
 
 <script>
