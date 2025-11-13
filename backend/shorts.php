@@ -62,7 +62,7 @@ $data = [
     [
         "category_id" => "2",
         "title" => "Chicken Caesar Wrap",
-        "img" => "lunch/Chicken-Caesar-Wraps-14.jpg",
+        "img" => "recepten/lunch/Chicken-Caesar-Wraps-14.jpg",
         "description" => "Grilled chicken and crisp lettuce in a soft tortilla wrap.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Grill chicken breast until cooked through."],
@@ -80,7 +80,7 @@ $data = [
     [
         "category_id" => "2",
         "title" => "Mediterranean Quinoa Salad",
-        "img" => "med-quinoa-salad-process-1-ingredients.jpeg",
+        "img" => "recepten/lunch/med-quinoa-salad-process-1-ingredients.jpeg",
         "description" => "Refreshing salad with quinoa, feta, cucumber, and tomatoes.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Cook quinoa and let it cool."],
@@ -98,7 +98,7 @@ $data = [
     [
         "category_id" => "2",
         "title" => "Grilled Veggie Sandwich",
-        "img" => "Grilled-Vegetable-Burrata-Sandwich-with-Lemon-Thyme-Honey-Mustard-1.jpg",
+        "img" => "recepten/lunch/Grilled-Vegetable-Burrata-Sandwich-with-Lemon-Thyme-Honey-Mustard-1.jpg",
         "description" => "A warm sandwich with grilled vegetables and pesto spread.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Grill sliced bell peppers and zucchini."],
@@ -117,7 +117,7 @@ $data = [
     [
         "category_id" => "3",
         "title" => "Lemon Herb Salmon",
-        "img" => "dinner/GKALEJUNKIE-SHEET-PAN-LEMON-HERB-SALMON-3.jpg",
+        "img" => "recepten/dinner/KALEJUNKIE-SHEET-PAN-LEMON-HERB-SALMON-3.jpg",
         "description" => "Baked salmon with herbs and lemon slices for a light meal.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Preheat oven to 200°C (400°F)."],
@@ -134,7 +134,7 @@ $data = [
     [
         "category_id" => "3",
         "title" => "Garlic Shrimp Stir Fry",
-        "img" => "Garlic-Shrimp-Stir-Fry-14.webp",
+        "img" => "recepten/dinner/Garlic-Shrimp-Stir-Fry-14.webp",
         "description" => "Shrimp stir-fried with vegetables and a garlic soy sauce.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Heat oil in a pan and add garlic."],
@@ -151,7 +151,7 @@ $data = [
     [
         "category_id" => "3",
         "title" => "Chicken & Spinach Skillet",
-        "img" => "creamy-skillet-chicken-with-spinach-mushrooms-7933679-3x2-1-56a3134d70b34e9fb2c7d675a0e301e8.jpg",
+        "img" => "recepten/dinner/creamy-skillet-chicken-with-spinach-mushrooms-7933679-3x2-1-56a3134d70b34e9fb2c7d675a0e301e8.jpg",
         "description" => "Sautéed chicken with fresh spinach in a garlic butter sauce.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Cook chicken pieces in a skillet with olive oil."],
@@ -170,7 +170,7 @@ $data = [
     [
         "category_id" => "4",
         "title" => "Nutty Energy Bites",
-        "img" => "snacks/Nutty-Energy-Bites-2.jpg",
+        "img" => "recepten/snacks/Nutty-Energy-Bites-2.jpg",
         "description" => "Healthy bites made from oats, honey, and peanut butter.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Mix oats, peanut butter, and honey in a bowl."],
@@ -186,7 +186,7 @@ $data = [
     [
         "category_id" => "4",
         "title" => "Spiced Popcorn",
-        "img" => "spiced_popcorn.jpg",
+        "img" => "recepten/snacks/spiced_popcorn.jpg",
         "description" => "Air-popped popcorn tossed with paprika and olive oil.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Air-pop the popcorn kernels."],
@@ -203,7 +203,7 @@ $data = [
     [
         "category_id" => "4",
         "title" => "Fruit & Yogurt Cups",
-        "img" => "Fruit-Yogurt-Parfait-11.jpg",
+        "img" => "recepten/snacks/Fruit-Yogurt-Parfait-11.jpg",
         "description" => "Small cups filled with yogurt and fresh fruits for a light snack.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Spoon yogurt into a cup."],
