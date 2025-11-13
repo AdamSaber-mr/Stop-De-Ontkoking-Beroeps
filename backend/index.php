@@ -87,7 +87,6 @@ include 'includes/recepies.inc.php';
     </div>
 
     <div class="category-feed">
-
         <?php 
         foreach ($data as $item) {
             $random_number = rand(0,10);
@@ -107,7 +106,11 @@ include 'includes/recepies.inc.php';
             }
         
         ?>
+        <div class="scrollbar">
+              <div class="scroll-thumb"></div>
+        </div>
     </div>
+
 </div>
 
 
