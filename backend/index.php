@@ -1,5 +1,6 @@
 <?php
 include_once './header.php';
+include 'includes/recepies.inc.php';
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -12,6 +13,7 @@ include_once './header.php';
     </h1>
 </div>
 
+<!-- Catogories -->
 <div class="category-container">
     <div class="title-search-container" data-aos="fade-down">
         <h1>Category</h1>
@@ -74,7 +76,7 @@ include_once './header.php';
     </button>
 </div>
 
-
+<!-- Trending -->
 <div class="category-container">
     <div class="title-search-container" data-aos="fade-down">
         <h1>Trending</h1>
@@ -85,45 +87,26 @@ include_once './header.php';
     </div>
 
     <div class="category-feed">
-        <div class="category-item" data-aos="fade-up" data-aos-delay="0">
-            <div class="category-header">
-                <img src="images/placeholder.svg" alt="Category Icon">
-            </div>
-            <h2 class="category-title">Category Title</h2>
-            <p class="category-description">
-                This is a short description of the category or item. It gives users a quick idea of what it is about.
-            </p>
-        </div>
 
-        <div class="category-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="category-header">
-                <img src="images/placeholder.svg" alt="Category Icon">
-            </div>
-            <h2 class="category-title">Category Title</h2>
-            <p class="category-description">
-                This is a short description of the category or item. It gives users a quick idea of what it is about.
-            </p>
-        </div>
-
-        <div class="category-item" data-aos="fade-up" data-aos-delay="200">
-            <div class="category-header">
-                <img src="images/placeholder.svg" alt="Category Icon">
-            </div>
-            <h2 class="category-title">Category Title</h2>
-            <p class="category-description">
-                This is a short description of the category or item. It gives users a quick idea of what it is about.
-            </p>
-        </div>
-
-        <div class="category-item" data-aos="fade-up" data-aos-delay="300">
-            <div class="category-header">
-                <img src="images/placeholder.svg" alt="Category Icon">
-            </div>
-            <h2 class="category-title">Category Title</h2>
-            <p class="category-description">
-                This is a short description of the category or item. It gives users a quick idea of what it is about.
-            </p>
-        </div>
+        <?php 
+        foreach ($data as $item) {
+            $random_number = rand(0,10);
+            if ($random_number > 5) {
+                ?>
+                <div class="category-item" data-aos="fade-up" data-aos-delay="0">
+                 <div class="category-header">
+                 <img src="images/<?php echo $item['img']; ?>" alt="Category Icon">
+                </div>
+                 <h2 class="category-title"><?php echo $item['title']; ?></h2>
+                 <p class="category-description">
+                 <?php echo $item['description']; ?>
+                 </p>
+                </div>
+            <?php
+             }
+            }
+        
+        ?>
     </div>
 </div>
 
