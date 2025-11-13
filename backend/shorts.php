@@ -9,7 +9,7 @@ $data = [
     [
         "category_id" => "1",
         "title" => "Berry Oatmeal Bowl",
-        "img" => "breakfast1.png",
+        "img" => "recepten/breakfast/Triple-Berry-Oatmeal-Breakfast-Bowl-3.jpg",
         "description" => "Warm oatmeal topped with fresh berries and honey.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Cook oats in milk over medium heat until soft."],
@@ -26,7 +26,7 @@ $data = [
     [
         "category_id" => "1",
         "title" => "Avocado Toast",
-        "img" => "breakfast2.png",
+        "img" => "recepten/breakfast/AvocadoToastwithEggFranceC4x3-bb87e3bbf1944657b7db35f1383fabdb.jpg",
         "description" => "Toasted bread topped with creamy avocado and chili flakes.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Toast the bread slice until golden brown."],
@@ -43,7 +43,7 @@ $data = [
     [
         "category_id" => "1",
         "title" => "Yogurt Parfait",
-        "img" => "breakfast3.png",
+        "img" => "recepten/breakfast/Greek-Yogurt-Parfait-Recipe.jpg",
         "description" => "Layered yogurt, granola, and fruit for a fresh morning treat.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Add yogurt to a glass or bowl."],
@@ -62,7 +62,7 @@ $data = [
     [
         "category_id" => "2",
         "title" => "Chicken Caesar Wrap",
-        "img" => "lunch1.png",
+        "img" => "lunch/Chicken-Caesar-Wraps-14.jpg",
         "description" => "Grilled chicken and crisp lettuce in a soft tortilla wrap.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Grill chicken breast until cooked through."],
@@ -80,7 +80,7 @@ $data = [
     [
         "category_id" => "2",
         "title" => "Mediterranean Quinoa Salad",
-        "img" => "lunch2.png",
+        "img" => "med-quinoa-salad-process-1-ingredients.jpeg",
         "description" => "Refreshing salad with quinoa, feta, cucumber, and tomatoes.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Cook quinoa and let it cool."],
@@ -98,7 +98,7 @@ $data = [
     [
         "category_id" => "2",
         "title" => "Grilled Veggie Sandwich",
-        "img" => "lunch3.png",
+        "img" => "Grilled-Vegetable-Burrata-Sandwich-with-Lemon-Thyme-Honey-Mustard-1.jpg",
         "description" => "A warm sandwich with grilled vegetables and pesto spread.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Grill sliced bell peppers and zucchini."],
@@ -117,7 +117,7 @@ $data = [
     [
         "category_id" => "3",
         "title" => "Lemon Herb Salmon",
-        "img" => "dinner1.png",
+        "img" => "dinner/GKALEJUNKIE-SHEET-PAN-LEMON-HERB-SALMON-3.jpg",
         "description" => "Baked salmon with herbs and lemon slices for a light meal.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Preheat oven to 200°C (400°F)."],
@@ -134,7 +134,7 @@ $data = [
     [
         "category_id" => "3",
         "title" => "Garlic Shrimp Stir Fry",
-        "img" => "dinner2.png",
+        "img" => "Garlic-Shrimp-Stir-Fry-14.webp",
         "description" => "Shrimp stir-fried with vegetables and a garlic soy sauce.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Heat oil in a pan and add garlic."],
@@ -151,7 +151,7 @@ $data = [
     [
         "category_id" => "3",
         "title" => "Chicken & Spinach Skillet",
-        "img" => "dinner3.png",
+        "img" => "creamy-skillet-chicken-with-spinach-mushrooms-7933679-3x2-1-56a3134d70b34e9fb2c7d675a0e301e8.jpg",
         "description" => "Sautéed chicken with fresh spinach in a garlic butter sauce.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Cook chicken pieces in a skillet with olive oil."],
@@ -170,7 +170,7 @@ $data = [
     [
         "category_id" => "4",
         "title" => "Nutty Energy Bites",
-        "img" => "snack1.png",
+        "img" => "snacks/Nutty-Energy-Bites-2.jpg",
         "description" => "Healthy bites made from oats, honey, and peanut butter.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Mix oats, peanut butter, and honey in a bowl."],
@@ -186,7 +186,7 @@ $data = [
     [
         "category_id" => "4",
         "title" => "Spiced Popcorn",
-        "img" => "snack2.png",
+        "img" => "spiced_popcorn.jpg",
         "description" => "Air-popped popcorn tossed with paprika and olive oil.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Air-pop the popcorn kernels."],
@@ -203,7 +203,7 @@ $data = [
     [
         "category_id" => "4",
         "title" => "Fruit & Yogurt Cups",
-        "img" => "snack3.png",
+        "img" => "Fruit-Yogurt-Parfait-11.jpg",
         "description" => "Small cups filled with yogurt and fresh fruits for a light snack.",
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Spoon yogurt into a cup."],
