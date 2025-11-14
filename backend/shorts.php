@@ -15,6 +15,8 @@ if($category_id){
             $item_to_add[] = $item;
         }
     }
+
+    shuffle($item_to_add);
 }
 
 if($recept_id){
@@ -22,12 +24,21 @@ if($recept_id){
         $id = (int)$item["id"];
 
         if($id == $recept_id){
-            array_unshift($item_to_add, $item);
-        }else{
             $item_to_add[] = $item;
+        }else{
+            $other_items[] = $item;
         }
     }
 
+    if (!empty($other_items)) {
+        shuffle($other_items);
+        $item_to_add = array_merge($item_to_add, $other_items);
+    }
+}
+
+if (empty($item_to_add)){
+    $item_to_add = array_merge($item_to_add, $data);
+    shuffle($item_to_add);
 }
 
 include_once './header.php';
