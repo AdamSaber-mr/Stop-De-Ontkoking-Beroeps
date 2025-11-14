@@ -150,7 +150,7 @@
       margin: 0;
       padding: 0;
       width: 100vw;
-      overflow-x: hidden;
+      /* overflow-x: hidden; */
   }
 
   a{
@@ -172,6 +172,9 @@
     align-items: center;
     padding: 0.5rem 1rem;
     background-color: #a9f2d7;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
   }
 
   #mobile-header #logo {
