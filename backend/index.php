@@ -92,19 +92,18 @@ include 'includes/recepies.inc.php';
             $random_number = rand(0,10);
             if ($random_number > 5) {
                 ?>
-                <div class="category-item" data-aos="fade-up" data-aos-delay="0">
-                 <div class="category-header">
-                 <img src="images/<?php echo $item['img']; ?>" alt="Category Icon">
-                </div>
-                 <h2 class="category-title"><?php echo $item['title']; ?></h2>
-                 <p class="category-description">
-                 <?php echo $item['description']; ?>
-                 </p>
-                </div>
+                <a href="shorts.php?recept_id=<?= $item["id"] ?>" class="category-item" data-aos="fade-up" data-aos-delay="0">
+                    <div class="category-header">
+                        <img src="images/<?php echo $item['img']; ?>" alt="Category Icon">
+                    </div>
+                    <h2 class="category-title"><?php echo $item['title']; ?></h2>
+                    <p class="category-description">
+                        <?php echo $item['description']; ?>
+                    </p>
+                </a>
             <?php
-             }
             }
-        
+        }
         ?>
     </div>
 
