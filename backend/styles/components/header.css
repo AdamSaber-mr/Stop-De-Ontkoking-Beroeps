@@ -144,6 +144,18 @@
   display: none;
 }
 
+#side_menu {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 150px;
+  height: 100vh;
+  background-color: #a9f2d7;
+  padding: 2rem 1rem;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
 /* header media qerry */
 @media (max-width: 690px) { 
   html, body {
@@ -205,18 +217,6 @@
 
   #side_menu .header_hamburger{
     margin-left: 15%;
-  }
-
-  #side_menu {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: 150px;
-    height: 100vh;
-    background-color: #a9f2d7;
-    padding: 2rem 1rem;
-    transition: left 0.3s ease;
-    z-index: 1000;
   }
   
   #side_menu.show {
