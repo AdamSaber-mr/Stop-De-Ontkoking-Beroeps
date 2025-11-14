@@ -87,12 +87,23 @@
 <script>
 const hamburgers = document.querySelectorAll('.header_hamburger');
 const sideMenu = document.getElementById('side_menu');
+const mobileQuery = window.matchMedia("(max-width: 768px)");
 
 hamburgers.forEach(hamburger => {
     hamburger.addEventListener('click', () => {
-        sideMenu.classList.toggle('show'); // toggle sidebar visibility
-        hamburger.classList.toggle('open'); // animate hamburger
+        sideMenu.classList.toggle('show');
+        hamburger.classList.toggle('open'); 
     });
 });
 
+document.addEventListener('pointerdown', (event) => {
+  if (!mobileQuery.matches) return;
+
+  const isHamburger = event.target.closest('.header_hamburger');
+  const isInsideMenu = event.target.closest('#side_menu');
+
+  if (!isHamburger && !isInsideMenu) {
+    sideMenu.classList.remove('show');
+  }
+});
 </script>
