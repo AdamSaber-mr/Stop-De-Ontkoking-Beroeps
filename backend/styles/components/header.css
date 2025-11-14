@@ -184,7 +184,7 @@
     margin-right: 10px;
   }
 
-  #header_hamburger {
+  .header_hamburger {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -194,7 +194,7 @@
     padding: 5px 0; 
   }
 
-  #header_hamburger span {
+  .header_hamburger span {
     display: block;
     height: 3px;
     width: 30px; 
@@ -218,6 +218,7 @@
   
   #side_menu.show {
       left: 0; 
+      display: block;
   }
   
   #side_menu .nav-menu {

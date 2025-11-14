@@ -51,7 +51,7 @@
 
 <div id="mobile-header">
     <img id="logo" src="images/logo.png" alt="Logo">
-    <div id="header_hamburger">
+    <div class="header_hamburger">
         <span></span>
         <span></span>
         <span></span>
@@ -59,6 +59,12 @@
 </div>
 
 <div id="side_menu">
+    <div class="header_hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
     <ul class="nav-menu">
         <li><a href="index.php">Home</a></li>
         <li>Browse</li>
@@ -79,11 +85,14 @@
 </ul>
 
 <script>
-const hamburger = document.getElementById('header_hamburger');
+const hamburgers = document.querySelectorAll('.header_hamburger');
 const sideMenu = document.getElementById('side_menu');
 
-hamburger.addEventListener('click', () => {
-    sideMenu.classList.toggle('show'); 
-    hamburger.classList.toggle('open');
+hamburgers.forEach(hamburger => {
+    hamburger.addEventListener('click', () => {
+        sideMenu.classList.toggle('show'); // toggle sidebar visibility
+        hamburger.classList.toggle('open'); // animate hamburger
+    });
 });
+
 </script>
