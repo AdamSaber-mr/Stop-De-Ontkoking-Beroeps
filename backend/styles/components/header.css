@@ -144,10 +144,6 @@
   display: none;
 }
 
-#side_menu{
-  display: none;
-}
-
 /* header media qerry */
 @media (max-width: 690px) { 
   html, body {
@@ -204,6 +200,10 @@
     transition: all 0.3s ease; 
   }
 
+  #side_menu .header_hamburger{
+    margin-left: 15%;
+  }
+
   #side_menu {
     position: fixed;
     top: 0;
@@ -228,6 +228,7 @@
   }
 
   #side_menu li{
+   font-size: clamp(18px, 6vw, 22px);
    font-family: "Poppins", sans-serif;
    color: #333;
   }

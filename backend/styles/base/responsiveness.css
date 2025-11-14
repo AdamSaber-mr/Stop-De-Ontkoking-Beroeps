@@ -9,6 +9,14 @@
         width: 110px;
     }
 
+    .category-container{
+        margin-bottom: clamp(1vh, 4vh, 6vh) !important;
+    }
+
+    #banner-2{
+        margin-bottom: 50px !important;
+    }
+
     .index-intro {
         padding: 25px;
     }
