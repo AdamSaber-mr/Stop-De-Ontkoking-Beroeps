@@ -24,6 +24,7 @@
 }
 
 #journal-news-container {
+    display: flex;
     margin-left: clamp(1vw, 2vw, 3vw);
     background-color: wheat;
     width: clamp(500px, 45%, 800px); 
@@ -90,7 +91,7 @@
 
 .info-card {
     width: clamp(250px, 45vw, 700px);  
-    height: clamp(200px, 50vh, 900px);
+    height: clamp(350px, 65vh, 900px);
     border-radius: 8px 8px 0 0;
     background-color: #f5deb3;
     overflow: hidden;
