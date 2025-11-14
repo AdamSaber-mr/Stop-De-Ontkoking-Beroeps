@@ -106,9 +106,6 @@ include 'includes/recepies.inc.php';
             }
         
         ?>
-        <div class="scrollbar">
-              <div class="scroll-thumb"></div>
-        </div>
     </div>
 
 </div>
