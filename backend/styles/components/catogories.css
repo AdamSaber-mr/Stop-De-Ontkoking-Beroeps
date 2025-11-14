@@ -59,7 +59,7 @@
 }
 
 .search.active .search-input {
-    width: 200px;
+    width: clamp(120px, 25vw, 200px);
     opacity: 1;
     pointer-events: auto;
 }
