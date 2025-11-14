@@ -26,14 +26,13 @@
 #journal-news-container {
     margin-left: clamp(1vw, 2vw, 3vw);
     background-color: wheat;
-
     width: clamp(500px, 45%, 800px); 
-    height: clamp(500px, 65vh, 700px); 
+    height: clamp(500px, 90vh, 700px); 
     border-radius: 8px 8px 0 0;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 
@@ -50,6 +49,7 @@
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
+    border-radius: 8px 8px 0 0;
 }
 
 #journal-news-container:hover img {
@@ -57,11 +57,14 @@
 }
 
 #journal-news-container h1 {
-    font-size: clamp(28px, 5vw, 40px);
+    font-size: clamp(16px, 3vw, 40px);
     margin: 1rem 1rem 0 1rem;
     color: #333;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, font-size 0.3s ease;
+    word-wrap: break-word;  
+    line-height: 1.2;       
 }
+
 
 #journal-news-container:hover h1 {
     color: #007BFF;
@@ -77,15 +80,17 @@
 #info-cards-container {
     display: flex;
     flex-direction: column;
-    gap: clamp(1rem, 2vw, 2rem); 
-    padding-left: clamp(10px, 10vw, 25vw);
+    gap: clamp(1rem, 2vw, 2rem);
+    padding-left: clamp(10px, 5vw, 25vw); /* adjusted for smaller screens */
     padding-right: clamp(10px, 5vw, 20px);
     margin-bottom: 2rem;
+    box-sizing: border-box;
 }
+
 
 .info-card {
     width: clamp(250px, 45vw, 700px);  
-    height: clamp(200px, 30vh, 400px);
+    height: clamp(200px, 50vh, 900px);
     border-radius: 8px 8px 0 0;
     background-color: #f5deb3;
     overflow: hidden;
