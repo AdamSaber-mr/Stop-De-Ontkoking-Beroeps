@@ -1,6 +1,7 @@
 .category-container {
     width: 100%;
     margin-bottom: clamp(5vh, 10vh, 20vh);
+    overflow-x: auto;
 }
 
 /* --- Title & Search Bar --- */
@@ -92,7 +93,6 @@
     width: fit-content;
     display: flex;
     gap: 20px;
-    overflow-x: auto;
     white-space: nowrap;
     scroll-snap-type: x mandatory;
 }
