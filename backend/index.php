@@ -71,7 +71,7 @@ include 'includes/recepies.inc.php';
     <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
         Get <span class="highlight">Cooking!</span>
     </h1>
-    <button data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+    <button data-aos="fade-up" onclick="goToUrl('shorts.php')" data-aos-duration="1000" data-aos-delay="0">
         Explore Recipes <i class="fas fa-utensils"></i>
     </button>
 </div>
