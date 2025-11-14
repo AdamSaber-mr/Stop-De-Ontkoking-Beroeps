@@ -163,8 +163,8 @@
   }
 
   #banner-1 h1 {
-        font-size: clamp(1.5rem, 8vw, 4rem);
-        letter-spacing: 1.5px;
+      font-size: clamp(2rem, 4vw, 6rem) !important;
+      letter-spacing: 1.5px !important;
     }
 
   #header {

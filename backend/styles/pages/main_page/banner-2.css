@@ -22,23 +22,23 @@
 #banner-2 h1 {
     position: absolute;
     bottom: -10%;
-    left: 15%;
-    max-width: 20vw;
-    font-size: clamp(4rem, 4vw, 6rem);
+    left: 30%;
+    width: clamp(15vw, 50%, 50vw); /* min 15vw, preferred 50%, max 50vw */
+    font-size: clamp(4rem, 4vw, 6rem); /* responsive font size */
     text-transform: uppercase;
     letter-spacing: 4px;
-    text-align: center;
+    text-align: left;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     background-color: white;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-align: left;
 
     animation: fadeInUp 0.8s ease-out forwards;
     opacity: 0;
     transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
+
 
 #banner-2 h1 .highlight {
     background-color: rgb(169, 242, 215);

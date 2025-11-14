@@ -60,6 +60,11 @@
     .index-intro h1 {
         font-size: 1.6rem;
     }
+
+    #banner-2 h1{
+        font-size: clamp(3rem, 3vw, 6rem) !important;
+        bottom: 0% !important;
+    }
 }
 
 @media (max-width: 555px) {
