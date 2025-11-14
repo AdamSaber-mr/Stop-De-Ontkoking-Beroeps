@@ -17,6 +17,10 @@
         margin-bottom: 50px !important;
     }
 
+    #banner-2 h1{
+        bottom: 0% !important;
+    }
+
     .index-intro {
         padding: 25px;
     }
