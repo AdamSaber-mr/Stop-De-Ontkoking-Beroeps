@@ -29,6 +29,12 @@ function search(parent_container, search_container, search_entry) {
 
 
 const catogory_search = document.getElementById("catogory_search_input");
+const trending_search = document.getElementById("trending_search_input")
+
+trending_search.addEventListener("input", function() {
+    const searchText = trending_search.value;
+    search(document.getElementById("trending_items"), ".category-item", searchText);
+});
 
 catogory_search.addEventListener("input", function() {
     const searchText = catogory_search.value;

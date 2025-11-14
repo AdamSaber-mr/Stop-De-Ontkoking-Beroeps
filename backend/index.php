@@ -82,11 +82,11 @@ include 'includes/recepies.inc.php';
         <h1>Trending</h1>
         <div class="search">
             <button class="search-btn"><img src="images/magnifying-glass.png"></button>
-            <input type="text" class="search-input" placeholder="Search..." />
+            <input type="text" id="trending_search_input" class="search-input" placeholder="Search..." />
         </div>
     </div>
 
-    <div class="category-feed">
+    <div class="category-feed" id="trending_items">
         <?php 
         foreach ($data as $item) {
             $random_number = rand(0,10);
