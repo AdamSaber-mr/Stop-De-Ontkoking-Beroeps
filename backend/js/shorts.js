@@ -28,6 +28,10 @@ function nextShort() {
   let next = current + 1;
   if (next >= shorts.length) next = 0;
 
+  const container = document.getElementById("favroute");
+  const img = container.querySelector("img");
+  img.src = "images/heart_unfilled.png";
+
   showShort(next, 'down');
   setTimeout(() => canScroll = true, COOLDOWN);
 }
