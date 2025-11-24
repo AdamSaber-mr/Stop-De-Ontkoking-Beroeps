@@ -7,6 +7,7 @@ $data = [
         "title" => "Berry Oatmeal Bowl",
         "img" => "recepten/breakfast/Triple-Berry-Oatmeal-Breakfast-Bowl-3.jpg",
         "description" => "Warm oatmeal topped with fresh berries and honey.",
+        "tags" => ["breakfast", "healthy"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Cook oats in milk over medium heat until soft."],
             ["stepNumber" => 2, "instructions" => "Add a drizzle of honey and stir well."],
@@ -25,6 +26,7 @@ $data = [
         "title" => "Avocado Toast",
         "img" => "recepten/breakfast/AvocadoToastwithEggFranceC4x3-bb87e3bbf1944657b7db35f1383fabdb.jpg",
         "description" => "Toasted bread topped with creamy avocado and chili flakes.",
+        "tags" => ["breakfast", "vegetarian"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Toast the bread slice until golden brown."],
             ["stepNumber" => 2, "instructions" => "Mash avocado with salt and lemon juice."],
@@ -43,6 +45,7 @@ $data = [
         "title" => "Yogurt Parfait",
         "img" => "recepten/breakfast/Greek-Yogurt-Parfait-Recipe.jpg",
         "description" => "Layered yogurt, granola, and fruit for a fresh morning treat.",
+        "tags" => ["breakfast", "fruit"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Add yogurt to a glass or bowl."],
             ["stepNumber" => 2, "instructions" => "Layer with granola and sliced fruit."],
@@ -63,6 +66,7 @@ $data = [
         "title" => "Chicken Caesar Wrap",
         "img" => "recepten/lunch/Chicken-Caesar-Wraps-14.jpg",
         "description" => "Grilled chicken and crisp lettuce in a soft tortilla wrap.",
+        "tags" => ["lunch", "chicken"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Grill chicken breast until cooked through."],
             ["stepNumber" => 2, "instructions" => "Slice chicken and mix with Caesar dressing."],
@@ -82,6 +86,7 @@ $data = [
         "title" => "Mediterranean Quinoa Salad",
         "img" => "recepten/lunch/med-quinoa-salad-process-1-ingredients.jpeg",
         "description" => "Refreshing salad with quinoa, feta, cucumber, and tomatoes.",
+        "tags" => ["lunch", "salad"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Cook quinoa and let it cool."],
             ["stepNumber" => 2, "instructions" => "Chop vegetables and mix with quinoa."],
@@ -101,6 +106,7 @@ $data = [
         "title" => "Grilled Veggie Sandwich",
         "img" => "recepten/lunch/Grilled-Vegetable-Burrata-Sandwich-with-Lemon-Thyme-Honey-Mustard-1.jpg",
         "description" => "A warm sandwich with grilled vegetables and pesto spread.",
+        "tags" => ["lunch", "vegetarian"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Grill sliced bell peppers and zucchini."],
             ["stepNumber" => 2, "instructions" => "Spread pesto on bread slices."],
@@ -114,13 +120,14 @@ $data = [
         ]
     ],
 
-    // 🍛 Category 3 – Dinner
+    // Category 3 – Dinner
     [
         "id" => "7",
         "category_id" => "3",
         "title" => "Lemon Herb Salmon",
         "img" => "recepten/dinner/KALEJUNKIE-SHEET-PAN-LEMON-HERB-SALMON-3.jpg",
         "description" => "Baked salmon with herbs and lemon slices for a light meal.",
+        "tags" => ["dinner", "salmon"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Preheat oven to 200°C (400°F)."],
             ["stepNumber" => 2, "instructions" => "Place salmon on a baking tray lined with parchment paper."],
@@ -139,6 +146,7 @@ $data = [
         "title" => "Garlic Shrimp Stir Fry",
         "img" => "recepten/dinner/Garlic-Shrimp-Stir-Fry-14.webp",
         "description" => "Shrimp stir-fried with vegetables and a garlic soy sauce.",
+        "tags" => ["dinner", "shrimp"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Heat oil in a pan and add garlic."],
             ["stepNumber" => 2, "instructions" => "Add shrimp and cook until pink."],
@@ -157,6 +165,7 @@ $data = [
         "title" => "Chicken & Spinach Skillet",
         "img" => "recepten/dinner/creamy-skillet-chicken-with-spinach-mushrooms-7933679-3x2-1-56a3134d70b34e9fb2c7d675a0e301e8.jpg",
         "description" => "Sautéed chicken with fresh spinach in a garlic butter sauce.",
+        "tags" => ["dinner", "chicken"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Cook chicken pieces in a skillet with olive oil."],
             ["stepNumber" => 2, "instructions" => "Add garlic and butter, then stir in spinach until wilted."],
@@ -177,6 +186,7 @@ $data = [
         "title" => "Nutty Energy Bites",
         "img" => "recepten/snacks/Nutty-Energy-Bites-2.jpg",
         "description" => "Healthy bites made from oats, honey, and peanut butter.",
+        "tags" => ["snack", "healthy"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Mix oats, peanut butter, and honey in a bowl."],
             ["stepNumber" => 2, "instructions" => "Roll mixture into small balls."],
@@ -194,6 +204,7 @@ $data = [
         "title" => "Spiced Popcorn",
         "img" => "recepten/snacks/spiced_popcorn.jpg",
         "description" => "Air-popped popcorn tossed with paprika and olive oil.",
+        "tags" => ["snack", "quick"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Air-pop the popcorn kernels."],
             ["stepNumber" => 2, "instructions" => "Toss with olive oil, salt, and paprika."],
@@ -212,6 +223,7 @@ $data = [
         "title" => "Fruit & Yogurt Cups",
         "img" => "recepten/snacks/Fruit-Yogurt-Parfait-11.jpg",
         "description" => "Small cups filled with yogurt and fresh fruits for a light snack.",
+        "tags" => ["snack", "fruit"],
         "steps" => [
             ["stepNumber" => 1, "instructions" => "Spoon yogurt into a cup."],
             ["stepNumber" => 2, "instructions" => "Add chopped fruits on top."],

@@ -11,6 +11,17 @@ foreach ($data as $item) {
         $item_to_add[] = $item;
     }
 }
+
+$all_tags = [];
+foreach ($item_to_add as $item) {
+    if (!empty($item['tags'])) {
+        foreach ($item['tags'] as $tag) {
+            $all_tags[$tag] = true; 
+        }
+    }
+}
+$all_tags = array_keys($all_tags); 
+sort($all_tags); 
 ?>
 
 <link rel="stylesheet" href="./styles/pages/overview_page/overview_page.css">
@@ -28,12 +39,12 @@ foreach ($data as $item) {
     <div class="category-container">
         <button class="category-btn" id="cat_button">Categories ▼</button>
         <ul class="category-list" id="list">
-            <li>Breakfast</li>
-            <li>Lunch</li>
-            <li>Dinner</li>
-            <li>Desserts</li>
-            <li>Snacks</li>
-        </ul>
+        <?php foreach ($all_tags as $tag): ?>
+            <li onclick="showCatogory('<?= htmlspecialchars($tag) ?>')">
+                <?= htmlspecialchars($tag) ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
     </div>  
 </div>
 
@@ -46,6 +57,16 @@ foreach ($item_to_add as $item) : ?>
             <img src="images/<?= htmlspecialchars($item["img"]) ?>" alt="<?= htmlspecialchars($item["title"]) ?>">
         </div>
         <h1 class="recepy-title"><?php echo htmlspecialchars($item['title']); ?></h1>
+
+        <?php if (!empty($item["tags"])): ?>
+            <div class="recepy-tags">
+                <?php foreach ($item["tags"] as $tag): ?>
+                    <span class="tag"><?= htmlspecialchars($tag) ?></span>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+
         <p class="recepy-description"><?php echo htmlspecialchars($item['description']); ?></p>
     </div>
 <?php endforeach; ?>
@@ -74,6 +95,33 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".category-container").classList.toggle("active");
     });
 });
+</script>
+
+<script>
+function showCatogory(category) {
+    const recepy_wrapper = document.getElementById("recepy_wrapper");
+    const recepies = recepy_wrapper.querySelectorAll(".recepy");
+
+    recepies.forEach(recepy => {
+        const tags = recepy.querySelectorAll(".tag");
+        let shouldShow = false;
+
+        tags.forEach(tag => {
+            let tag_text = tag.innerHTML.toLowerCase();
+            let category_lower = category.toLowerCase();
+
+            if (tag_text === category_lower) {
+                shouldShow = true;
+            }
+        });
+
+        if (shouldShow) {
+            recepy.style.display = "block";
+        } else {
+            recepy.style.display = "none";
+        }
+    });
+}
 </script>
 
 
