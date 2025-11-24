@@ -136,7 +136,7 @@ include 'includes/recepies.inc.php';
 </div>
 
 
-<script src="./js/search.js"></script>
+<script type="module" src="./js/search.js"></script>
 
 <?php
 include_once './footer.php';
