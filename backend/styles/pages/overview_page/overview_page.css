@@ -129,14 +129,15 @@ html, body {
     max-height: 95%;
     padding: 40px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(180px, 25%, 300px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: clamp(15px, 3vw, 30px);
     overflow-y: auto;
     justify-content: start;
 }
 .recepy{
     flex: 0 0 auto;
-    width: clamp(270px, 23vw, 450px);
+    /* width: clamp(270px, 23vw, 450px); */
+    width: 100%;
     height: clamp(150px, 70vh, 400px);
     background-color: wheat;
     border-radius: 8px 8px 0 0;
@@ -192,6 +193,7 @@ html, body {
 .recepy:hover{
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     filter: brightness(1.03);
+    cursor: pointer;
 }
 .recepy:hover .recepy-header img {
   transform: scale(1.03);
@@ -237,34 +239,35 @@ html, body {
 @media (max-width: 900px) {
   #recepy_wrapper {
       width: 90%;
-      padding: 30px;
-      grid-template-columns: repeat(auto-fit, minmax(clamp(160px, 40%, 250px), 1fr));
+      padding: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
   }
 }
 
 @media (max-width: 600px) {
-    #recepy_wrapper {
-        width: 100%;
-        margin-left: 0;
-        padding: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 45%, 220px), 1fr));
-        gap: 15px;
-    }
+  #overview_parrent {
+      flex-direction: column;
+      align-items: stretch;
+  }
+  #side_bar {
+      width: 95%;
+      height: auto;
+      box-sizing: border-box;
+  }
 }
 
+
 @media (max-width: 500px) {
- #recepy_wrapper {
-     padding: 15px;
-     grid-template-columns: 1fr;
-     gap: 10px;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
- }
- .recepy{
-     flex: 0 0 auto;
-     width: clamp(300px, 25vw, 500px);
-     height: clamp(125px, 60vh, 300px);        
- }
- }
+  #recepy_wrapper {
+      width: 100%;
+      margin-left: 0;
+      padding: 15px;
+      grid-template-columns: 1fr; /* 1 column */
+      gap: 10px;
+  }
+  .recepy {
+      width: 100%; /* fill the column */
+      height: clamp(125px, 50vh, 300px);
+  }
+}

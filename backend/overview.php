@@ -50,13 +50,12 @@ sort($all_tags);
 
 
 <div id="recepy_wrapper">
-<?php
-foreach ($item_to_add as $item) : ?>
-    <div class="recepy">
+<?php foreach ($item_to_add as $item) : ?>
+    <div class="recepy" data-id="<?= htmlspecialchars($item['id']) ?>">
         <div class="recepy-header">
             <img src="images/<?= htmlspecialchars($item["img"]) ?>" alt="<?= htmlspecialchars($item["title"]) ?>">
         </div>
-        <h1 class="recepy-title"><?php echo htmlspecialchars($item['title']); ?></h1>
+        <h1 class="recepy-title"><?= htmlspecialchars($item['title']) ?></h1>
 
         <?php if (!empty($item["tags"])): ?>
             <div class="recepy-tags">
@@ -66,8 +65,7 @@ foreach ($item_to_add as $item) : ?>
             </div>
         <?php endif; ?>
 
-
-        <p class="recepy-description"><?php echo htmlspecialchars($item['description']); ?></p>
+        <p class="recepy-description"><?= htmlspecialchars($item['description']) ?></p>
     </div>
 <?php endforeach; ?>
 </div>
@@ -98,6 +96,15 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
+document.querySelectorAll('.recepy').forEach(recepy => {
+    recepy.addEventListener('click', () => {
+        id = recepy.dataset.id
+        url = `shorts.php?recept_id=${id}`
+         window.location.href = url;
+    });
+});
+
+
 function showCatogory(category) {
     const recepy_wrapper = document.getElementById("recepy_wrapper");
     const recepies = recepy_wrapper.querySelectorAll(".recepy");
