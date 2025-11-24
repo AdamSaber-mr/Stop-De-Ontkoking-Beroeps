@@ -26,8 +26,8 @@ foreach ($data as $item) {
     </div>
 
     <div class="category-container">
-        <button class="category-btn">Categories ▼</button>
-        <ul class="category-list">
+        <button class="category-btn" id="cat_button">Categories ▼</button>
+        <ul class="category-list" id="list">
             <li>Breakfast</li>
             <li>Lunch</li>
             <li>Dinner</li>
@@ -65,6 +65,17 @@ foreach ($item_to_add as $item) : ?>
         search(document.getElementById("recepy_wrapper"), ".recepy", searchText, ".recepy-title");
     });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const category_btn = document.getElementById("cat_button");
+
+    category_btn.addEventListener("click", () => {
+        document.querySelector(".category-container").classList.toggle("active");
+    });
+});
+</script>
+
 
 <?php
 include 'footer.php';
