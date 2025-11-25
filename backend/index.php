@@ -1,6 +1,7 @@
 <?php
 include_once './header.php';
 include 'includes/recepies.inc.php';
+session_start();
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -68,13 +69,25 @@ include 'includes/recepies.inc.php';
 
 <div id="banner-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
     <img src="images/duties-of-a-chef.jpg">
-    <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-        Login om <span class="highlight">recepten<br></span> toe te voegen
-    </h1>
-    <button data-aos="fade-up" onclick="goToUrl('login.php')" data-aos-duration="1000" data-aos-delay="0">
-        Login <i class="fas fa-right-to-bracket"></i>
-    </button>
+
+    <?php if (isset($_SESSION['useruid'])): ?>
+        <h1 style="bottom: -10% !important;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            Get<br> <span class="highlight">Cooking!</span>
+        </h1>
+        <button data-aos="fade-up" onclick="goToUrl('add_recipe.php')" data-aos-duration="1000" data-aos-delay="0">
+            Explore Recipes <i class="fas fa-utensils"></i>
+        </button>
+    <?php else: ?>
+        <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            Login om <span class="highlight">recepten<br></span> toe te voegen
+        </h1>
+        <button data-aos="fade-up" onclick="goToUrl('login.php')" data-aos-duration="1000" data-aos-delay="0">
+            Login <i class="fas fa-right-to-bracket"></i>
+        </button>
+    <?php endif; ?>
 </div>
+
+
 
 <!-- Trending -->
 <div class="category-container">
