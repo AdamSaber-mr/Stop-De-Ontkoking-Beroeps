@@ -2,6 +2,19 @@
  session_start();
 ?>
 
+<?php
+$categories = [
+    1 => "Breakfast",
+    2 => "Lunch",
+    3 => "Dinner",
+    4 => "Snacks",
+];
+
+$random_id = rand(1, 4);
+
+$category_name = $categories[$random_id];
+?>
+
 
 
 
@@ -29,8 +42,8 @@
 
     <ul id="nav-menu">
         <li><a href="index.php">Home</a></li>
-        <li>Browse</li>
-        <li>Watch</li>
+        <li><a href="overview.php?catogory_id=<?= $random_id; ?>&catogory_name=<?= $category_name; ?>">Browse</a></li>
+        <li><a href="shorts.php">Watch</a></li>
     </ul>
 
     <div id="account-section">
@@ -67,8 +80,8 @@
     
     <ul class="nav-menu">
         <li><a href="index.php">Home</a></li>
-        <li>Browse</li>
-        <li>Watch</li>
+        <li><a href="overview.php?catogory_id=<?= $random_id; ?>&catogory_name=<?= $category_name; ?>">Browse</a></li>
+        <li><a href="shorts.php">Watch</a></li>
         <?php
         if (!isset($_SESSION['useruid'])) {
             echo "<li><a href='login.php'>Login</a></li>";
