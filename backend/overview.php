@@ -30,8 +30,8 @@ sort($all_tags);
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({
-        duration: 700,   // animation speed
-        once: true       // only animate once
+        duration: 700,  
+        once: true      
     });
 </script>
 
