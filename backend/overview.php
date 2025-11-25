@@ -61,7 +61,7 @@ sort($all_tags);
 
 <div id="recepy_wrapper">
 <?php foreach ($item_to_add as $index => $item) : ?>
-    <div class="recepy" 
+    <div class="recepy active" 
          data-id="<?= htmlspecialchars($item['id']) ?>" 
          data-aos="fade-up"
          data-aos-delay="<?= $index * 100 ?>">
@@ -97,7 +97,7 @@ sort($all_tags);
 
     overview_search.addEventListener("input", function() {
         const searchText = overview_search.value;
-        search(document.getElementById("recepy_wrapper"), ".recepy", searchText, ".recepy-title");
+        search(document.getElementById("recepy_wrapper"), ".recepy.active", searchText, ".recepy-title");
     });
 </script>
 
@@ -139,11 +139,21 @@ function showCatogory(category) {
         });
 
         if (shouldShow) {
-            recepy.style.display = "block";
+            const parent = recepy.parentNode;
+            const next = recepy.nextSibling;
+        
+            parent.removeChild(recepy);
+        
             recepy.classList.remove("aos-animate");
+            recepy.style.display = "block";
+            recepy.classList.add("active");
+        
+            if (next) parent.insertBefore(recepy, next);
+            else parent.appendChild(recepy);
         } else {
+            recepy.classList.remove("active");
             recepy.style.display = "none";
-        }  
+        }
     });
     AOS.refreshHard();
 }
