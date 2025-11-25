@@ -1,0 +1,219 @@
+/* === CookUp – Recept Toevoegen Page === */
+
+body {
+    background: linear-gradient(135deg, #f7fcfa, #eef9f4);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #2e2e2e;
+}
+
+/* === Wrapper === */
+
+.add-recipe-wrapper {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 2.5rem 3rem;
+    background: #ffffff;
+    border-radius: 1.8rem;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+    animation: fadeUp 0.5s ease-out;
+}
+
+h1 {
+    text-align: center;
+    color: #00a478;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+/* === Form Layout === */
+
+.recipe-form label {
+    font-weight: 600;
+    margin-top: 1rem;
+    display: block;
+    color: #006e53;
+}
+
+.recipe-form input,
+.recipe-form select,
+.recipe-form textarea {
+    width: 100%;
+    padding: 0.9rem;
+    margin-top: 0.4rem;
+    border: 1px solid #cfd8d6;
+    border-radius: 0.6rem;
+    font-size: 1rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    background: #fbfefc;
+}
+
+.recipe-form input:focus,
+.recipe-form select:focus,
+.recipe-form textarea:focus {
+    border-color: #00a478;
+    box-shadow: 0 0 0 3px rgba(0, 164, 120, 0.2);
+    outline: none;
+}
+
+/* === Tags === */
+
+.tag-container {
+    margin-top: 0.7rem;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    background: #f4fdf9;
+    border: 1px solid #d6ebe3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.tag-item {
+    background: #dff8f0;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.6rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: background 0.2s ease;
+}
+
+.tag-item:hover {
+    background: #c9f2e7;
+}
+
+/* === Section Titles === */
+
+h2 {
+    margin-top: 2rem;
+    color: #009970;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 2px solid #e3f5ee;
+    padding-bottom: 0.5rem;
+}
+
+/* === Repeated Fields Styling === */
+
+.ingredient-row,
+.step-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    background: #f8fcfb;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #e3eee9;
+    position: relative;
+}
+
+.step-row textarea {
+    flex: 1;
+}
+
+/* Remove button */
+
+.remove-btn {
+    background: #ff5a5f;
+    border: none;
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.9rem;
+    cursor: pointer;
+    align-self: center;
+    font-weight: 600;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.remove-btn:hover {
+    background: #e14b50;
+    transform: scale(1.05);
+}
+
+/* === Add Button === */
+
+.btn-add {
+    margin-top: 1rem;
+    padding: 0.7rem 1.4rem;
+    background: #00b488;
+    color: #fff;
+    border: none;
+    border-radius: 0.7rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.btn-add:hover {
+    background: #009970;
+    transform: translateY(-2px);
+}
+
+/* === Submit Button === */
+
+.btn-submit {
+    margin-top: 2.4rem;
+    width: 100%;
+    padding: 1rem;
+    background: #009970;
+    color: #fff;
+    border: none;
+    border-radius: 0.8rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.3s ease, transform 0.15s ease;
+}
+
+.btn-submit:hover {
+    background: #007f58;
+    transform: translateY(-2px);
+}
+
+/* === Link back === */
+
+.navLinks {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.navLinks a {
+    text-decoration: none;
+    color: #007f58;
+    font-weight: 600;
+    transition: color 0.25s ease;
+}
+
+.navLinks a:hover {
+    color: #00a478;
+}
+
+/* === Animations === */
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Responsive === */
+
+@media (max-width: 700px) {
+
+    .add-recipe-wrapper {
+        padding: 1.8rem;
+    }
+
+    .ingredient-row,
+    .step-row {
+        flex-direction: column;
+    }
+
+    .remove-btn {
+        width: 100%;
+    }
+}

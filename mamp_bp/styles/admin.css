@@ -1,0 +1,360 @@
+/* =========================================================
+   🌿 COOKUP ADMIN DASHBOARD — CLEAN, RESPONSIVE & MODERN
+   ========================================================= */
+
+/* -------- GLOBAL STYLES -------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f8f9fa, #ecf9f5);
+    margin: 0;
+    padding: 0;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* =========================================================
+   MAIN ADMIN LAYOUT
+   ========================================================= */
+.admin-shell {
+    display: flex;
+    align-items: stretch; /* Sidebar en main even hoog */
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1500px;
+    margin: 5rem auto;
+    gap: 2rem;
+    padding: 0 2rem;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+.admin-sidebar {
+    flex: 0 0 250px;
+    background: #C9F8E3;
+    color: #173f35;
+    border-radius: 1.2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-top {
+    text-align: center;
+}
+
+.sidebar-logo {
+    width: 60px;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #173f35;
+}
+
+/* LINKS */
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.85rem 1rem;
+    border-radius: 0.8rem;
+    color: #1e4a40;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.sidebar-link:hover {
+    background: rgba(0, 153, 112, 0.12);
+    transform: translateX(4px);
+}
+
+.sidebar-link.active {
+    background: #00a478;
+    color: #fff;
+}
+
+.sidebar-logout {
+    display: inline-block;
+    background: #FF5A5F;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.6rem 1.4rem;
+    border-radius: 0.7rem;
+    transition: all 0.25s ease;
+}
+
+.sidebar-logout:hover {
+    background: #e14b50;
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   MAIN CONTENT AREA
+   ========================================================= */
+.admin-main {
+    flex: 1;
+    border-radius: 1.2rem;
+    background: #fff;
+    padding: 2rem;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+}
+
+/* Wrapper binnen main */
+.wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.wrapper h1 {
+    color: #009970;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    letter-spacing: 0.2px;
+}
+
+/* =========================================================
+   TABLES (USERS & RECIPES)
+   ========================================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+#recipesTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 1rem;
+    display: none;
+}
+
+/* HEADER */
+thead {
+    background: #b8f0d2;
+    color: #222;
+}
+
+thead {
+    background: #A9F2D7;
+    color: #222;
+}
+
+th, td {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1rem;
+}
+
+tbody tr {
+    background: #fff;
+    transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+tbody tr:hover {
+    background-color: #f5fffb;
+    transform: scale(1.01);
+}
+
+/* ===== Lege tabelmelding ===== */
+td[colspan] {
+    font-style: italic;
+    color: #777;
+    padding: 2rem;
+}
+
+/* ===== Actieknoppen ===== */
+.actieknoppen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.btn {
+    text-decoration: none;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background 0.25s ease, transform 0.15s ease;
+    font-size: 0.95rem;
+}
+
+/* Kleuren voor knoppen */
+.btn-detail {
+    background: #00cec9;
+}
+
+.btn-toevoegen {
+    background: #55efc4;
+    color: #073b3a;
+}
+
+.btn-bewerken {
+    background: #74b9ff;
+}
+
+.btn-verwijderen {
+    background: #ff7675;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+th, td {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1rem;
+}
+
+tbody tr {
+    background: #fff;
+    transition: background-color 0.25s ease, transform 0.1s ease;
+}
+
+tbody tr:hover {
+    background-color: #f5fffb;
+    transform: scale(1.01);
+}
+
+/* ===== Lege tabelmelding ===== */
+td[colspan] {
+    font-style: italic;
+    color: #777;
+    padding: 2rem;
+}
+
+/* BUTTONS */
+.actieknoppen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.btn-bewerken { background: #74b9ff; }
+.btn-verwijderen { background: #ff7675; }
+.btn-detail { background: #00cec9; }
+
+.btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+/* =========================================================
+   RESPONSIVE TABLE (MOBILE VIEW)
+   ========================================================= */
+@media (max-width: 800px) {
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead { display: none; }
+
+    tr {
+        background: white;
+        margin-bottom: 1rem;
+        border-radius: 0.8rem;
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    td {
+        padding: 0.6rem 0;
+        text-align: right;
+        position: relative;
+        border-bottom: none;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        font-weight: 600;
+        color: #009970;
+    }
+
+    .actieknoppen {
+        justify-content: flex-start;
+        margin-top: 0.5rem;
+    }
+}
+
+/* =========================================================
+   SIDEBAR RESPONSIVE
+   ========================================================= */
+@media (max-width: 1000px) {
+    .admin-shell {
+        flex-direction: column;
+        margin: 2rem auto;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 1.2rem;
+        border-radius: 1rem;
+    }
+
+    .sidebar-nav ul {
+        display: flex;
+        gap: 1.2rem;
+        margin: 0;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .sidebar-title {
+        display: none;
+    }
+
+    .sidebar-link .label {
+        display: none;
+    }
+
+    .sidebar-link .icon {
+        font-size: 1.5rem;
+    }
+
+    .admin-main h1 {
+        text-align: center;
+    }
+}
+
+

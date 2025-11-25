@@ -1,0 +1,179 @@
+:root {
+    --bg: #f6fbf9;
+    --card: #fff;
+    --text: #22313f;
+    --accent: #33CFA5;
+    --danger: #e74c3c;
+    --danger-hover: #c0392b;
+    --secondary: #6c757d;
+    --secondary-hover: #5a6268;
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    --radius: 12px;
+    --max-width: 700px;
+}
+
+/* --- Algemene layout --- */
+body {
+    margin: 0;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(180deg, var(--bg) 0%, #edf6f3 100%);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 1.2rem;
+}
+
+/* --- Container --- */
+.delete-container {
+    background: var(--card);
+    width: 100%;
+    max-width: var(--max-width);
+    padding: 2rem 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Titel --- */
+.delete-container h1 {
+    text-align: center;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    color: var(--danger);
+    margin-bottom: 1.5rem;
+}
+
+/* --- Waarschuwings tekst --- */
+.warning-text {
+    font-size: 1rem;
+    background: rgba(231, 76, 60, 0.08);
+    border-left: 5px solid var(--danger);
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    margin-bottom: 1.8rem;
+    line-height: 1.6;
+}
+
+.warning-text .emphasis {
+    color: var(--danger);
+    font-weight: 700;
+}
+
+/* --- Gebruiker info --- */
+.user-info {
+    background: #f9fdfc;
+    border: 1px solid #e3eeec;
+    border-radius: var(--radius);
+    padding: 1.3rem 1.6rem;
+    margin-bottom: 2rem;
+}
+
+.user-info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user-info li {
+    padding: 0.4rem 0;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eef3f1;
+}
+
+.user-info li:last-child {
+    border-bottom: none;
+}
+
+.user-info strong {
+    color: #2d4d43;
+}
+
+/* --- Knoppen --- */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    padding: 0.9rem 1.4rem;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Verwijderen knop (rood) */
+.btn-danger {
+    background: var(--danger);
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background: var(--danger-hover);
+    box-shadow: 0 10px 24px rgba(231, 76, 60, 0.18);
+}
+
+/* Annuleren knop (grijs) */
+.btn-secondary {
+    background: var(--secondary);
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: var(--secondary-hover);
+    box-shadow: 0 10px 24px rgba(108, 117, 125, 0.15);
+}
+
+/* Geen resultaat */
+.no-result {
+    text-align: center;
+    background: #fafbfb;
+    border: 1px dashed #ccc;
+    padding: 2rem;
+    border-radius: var(--radius);
+}
+
+.no-result p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .delete-container {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .user-info li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
+}

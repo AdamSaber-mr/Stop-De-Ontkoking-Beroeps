@@ -1,0 +1,137 @@
+/* ===== Page Layout ===== */
+.profile-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: #f5f7fa;
+    padding-bottom: 50px;
+}
+
+/* Banner */
+.profile-banner {
+    width: 100%;
+    height: 220px;
+    background: url('../images/acountbanner.gif') center/cover no-repeat;
+}
+
+/* Main card */
+.profile-card {
+    width: 90%;
+    max-width: 1050px;
+    background: white;
+    margin-top: -110px;
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Avatar */
+.profile-avatar {
+    display: flex;
+    justify-content: center;
+    margin-top: -70px;
+    margin-bottom: 10px;
+}
+
+.profile-avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    border: 5px solid white;
+    object-fit: cover;
+}
+
+.profile-name {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.profile-manage-btn {
+    display: block;
+    margin: 0.3rem auto 1.5rem auto;
+    padding: 0.6rem 1.2rem;
+    background: #009970;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.profile-manage-btn:hover {
+    background: #007a58;
+}
+
+/* Sections */
+.profile-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.profile-section h3 {
+    margin-bottom: 1rem;
+    color: #222;
+    font-weight: 600;
+}
+
+.profile-item {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.8rem 1rem;
+    background: #f7fdfb;
+    border: 1px solid #e4f4ee;
+    border-radius: 10px;
+    margin-bottom: 0.8rem;
+}
+
+.profile-item .icon {
+    font-size: 1.4rem;
+}
+
+/* Buttons */
+.edit-btn,
+.add-btn,
+.view-btn {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.edit-btn {
+    background: #74b9ff;
+}
+
+.add-btn {
+    background: #00b894;
+}
+
+.view-btn {
+    background: #0984e3;
+}
+
+.edit-btn:hover { background: #4ea3ff; }
+.add-btn:hover { background: #00946f; }
+.view-btn:hover { background: #066ec0; }
+
+/* Recipe card */
+.recipe-card {
+    justify-content: space-between;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .profile-sections {
+        grid-template-columns: 1fr;
+    }
+}
