@@ -1,6 +1,7 @@
 <?php
 include_once './header.php';
 $category_id = $_GET['catogory_id'];
+$catogory_name = $_GET['catogory_name'];
 include 'includes/recepies.inc.php';
 $item_to_add = [];
 
@@ -39,7 +40,7 @@ sort($all_tags);
 <div id="overview_parrent">
 
 <div id="side_bar">
-    <h1>Test</h1>
+    <h1><?= $catogory_name ?></h1>
 
     <div class="search" id="overview_search">
         <button class="search-btn"><img src="images/magnifying-glass.png"></button>

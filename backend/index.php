@@ -24,7 +24,7 @@ include 'includes/recepies.inc.php';
     </div>
 
     <div class="category-feed" id="catogory_items">
-        <div class="category-item" onclick="goToUrl('overview.php?catogory_id=1')" data-aos="fade-up" data-aos-delay="0">
+        <div class="category-item" onclick="goToUrl('overview.php?catogory_id=1&catogory_name=Breakfast')" data-aos="fade-up" data-aos-delay="0">
             <div class="category-header">
                 <img src="images/catogories/breakfast.jpg" alt="Category Icon">
             </div>
@@ -34,7 +34,7 @@ include 'includes/recepies.inc.php';
             </p>
         </div>
 
-        <div class="category-item" onclick="goToUrl('overview.php?catogory_id=2')" data-aos="fade-up" data-aos-delay="100">
+        <div class="category-item" onclick="goToUrl('overview.php?catogory_id=2&catogory_name=Lunch')" data-aos="fade-up" data-aos-delay="100">
             <div class="category-header">
                 <img src="images/catogories/lunch.jpg" alt="Category Icon">
             </div>
@@ -44,7 +44,7 @@ include 'includes/recepies.inc.php';
             </p>
         </div>
 
-        <div class="category-item" onclick="goToUrl('overview.php?catogory_id=3')" data-aos="fade-up" data-aos-delay="200">
+        <div class="category-item" onclick="goToUrl('overview.php?catogory_id=3&catogory_name=Dinner')" data-aos="fade-up" data-aos-delay="200">
             <div class="category-header">
                 <img src="images/catogories/dinner.jpg" alt="Category Icon">
             </div>
@@ -54,7 +54,7 @@ include 'includes/recepies.inc.php';
             </p>
         </div>
 
-        <div class="category-item" onclick="goToUrl('overview.php?catogory_id=4')" data-aos="fade-up" data-aos-delay="300">
+        <div class="category-item" onclick="goToUrl('overview.php?catogory_id=4&catogory_name=Snacks')" data-aos="fade-up" data-aos-delay="300">
             <div class="category-header">
                 <img src="images/catogories/snacks.jpg" alt="Category Icon">
             </div>
