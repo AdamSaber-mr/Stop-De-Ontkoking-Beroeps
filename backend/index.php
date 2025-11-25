@@ -3,6 +3,21 @@ include_once './header.php';
 include 'includes/recepies.inc.php';
 session_start();
 ?>
+
+<?php
+$categories = [
+    1 => "Breakfast",
+    2 => "Lunch",
+    3 => "Dinner",
+    4 => "Snacks",
+];
+
+$random_id = rand(1, 4);
+
+$category_name = $categories[$random_id];
+?>
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
@@ -74,7 +89,7 @@ session_start();
         <h1 style="bottom: -10% !important;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
             Get<br> <span class="highlight">Cooking!</span>
         </h1>
-        <button data-aos="fade-up" onclick="goToUrl('add_recipe.php')" data-aos-duration="1000" data-aos-delay="0">
+        <button data-aos="fade-up" onclick="goToUrl('overview.php?catogory_id=<?= $random_id; ?>&catogory_name=<?= $category_name; ?>')" data-aos-duration="1000" data-aos-delay="0">
             Explore Recipes <i class="fas fa-utensils"></i>
         </button>
     <?php else: ?>
