@@ -1,50 +1,47 @@
 <?php
-// Foutmeldingen zichtbaar
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Sessie nodig voor token
+// Sessie
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-global $conn;
 
 // Database connectie
 require '../includes/dbh.inc.php';
+global $conn;
 
-// Check of formulier is verstuurd
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    echo "Ongeldige aanvraag.";
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    echo "Invalid request.";
     exit;
 }
 
-// Token check
-if (!isset($_POST["token"]) || $_POST["token"] !== $_SESSION["token"]) {
-    echo "Ongeldige token.";
+if (!isset($_POST['token']) || $_POST['token'] !== $_SESSION['token']) {
+    echo "Invalid token.";
     exit;
 }
 
-// Gegevens ophalen
-$recipeId = trim($_POST["id"]);
-$title = trim($_POST["title"]);
+$recipeId    = trim($_POST["id"]);
+$title       = trim($_POST["title"]);
 $description = trim($_POST["description"]);
-$categoryId = trim($_POST["categoryId"]);
+$categoryId  = trim($_POST["categoryId"]);
 
-$tags = isset($_POST["tags"]) ? $_POST["tags"] : [];
-$ingredients = isset($_POST["ingredients"]) ? $_POST["ingredients"] : [];
-$steps = isset($_POST["steps"]) ? $_POST["steps"] : [];
+$tags        = $_POST["tags"];
+$ingredients = $_POST["ingredients"];
+$steps       = $_POST["steps"];
 
-// === VALIDATIE ===
+// Validatie
 $errors = [];
 
 if (empty($title)) {
-    $errors['title'] = "Titel mag niet leeg zijn.";
+    $errors['title'] = "Title may not be empty.";
 }
 if (empty($description)) {
-    $errors['description'] = "Beschrijving mag niet leeg zijn.";
+    $errors['description'] = "Description may not be empty.";
 }
 if (empty($categoryId)) {
-    $errors['categoryId'] = "Categorie is verplicht.";
+    $errors['categoryId'] = "Category is required.";
 }
 
 if (!empty($errors)) {
@@ -53,92 +50,92 @@ if (!empty($errors)) {
     exit;
 }
 
-// ===== UPDATE RECIPE =====
+// RECIPE UPDATE
 try {
-    $sql = "UPDATE recipes 
-            SET title = :title, description = :description, categoryId = :categoryId 
-            WHERE recipeId = :recipeId";
 
-    $stmt = $conn->prepare($sql);
+    $stmt = $conn->prepare("
+        UPDATE recipes
+        SET title = :title,
+            description = :description,
+            categoryId = :categoryId
+        WHERE recipeId = :recipeId
+    ");
+
     $stmt->execute([
-        ":title" => $title,
+        ":title"       => $title,
         ":description" => $description,
-        ":categoryId" => $categoryId,
-        ":recipeId" => $recipeId
+        ":categoryId"  => $categoryId,
+        ":recipeId"    => $recipeId
     ]);
 
 } catch (PDOException $e) {
-    echo "Fout bij updaten recipe: " . $e->getMessage();
+    echo "Error updating recipe: " . $e->getMessage();
     exit;
 }
 
-// =====================================================
-// ===================== TAGS ==========================
-// =====================================================
-
+// UPDATE TAGS
 try {
-    // Eerst alles verwijderen
+    $conn->beginTransaction();
+
+    // Verwijderen
     $stmt = $conn->prepare("DELETE FROM recipe_tags WHERE recipeId = ?");
     $stmt->execute([$recipeId]);
 
-    // Daarna opnieuw toevoegen
+    // Toevoegen
     if (!empty($tags)) {
         $stmt = $conn->prepare("INSERT INTO recipe_tags (recipeId, tagId) VALUES (?, ?)");
+
         foreach ($tags as $tagId) {
             $stmt->execute([$recipeId, $tagId]);
         }
     }
 
+    $conn->commit();
+
 } catch (PDOException $e) {
-    echo "Fout bij updaten tags: " . $e->getMessage();
+    echo "Error updating tags: " . $e->getMessage();
     exit;
 }
 
-// =====================================================
-// ================== INGREDIENTEN =====================
-// =====================================================
-
-// 1. Haal bestaande ingredient IDs op
+// INGREDIENTEN UPDATE
 $stmt = $conn->prepare("SELECT ingredientId FROM ingredients WHERE recipeId = ?");
 $stmt->execute([$recipeId]);
-$existingIngs = $stmt->fetchAll(PDO::FETCH_COLUMN);
+$existing = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-// IDs die in formulier voorkomen
-$formIds = [];
+$formIngredientIds = [];
 
-foreach ($ingredients as $ing) {
-    if (!empty($ing["id"])) {
-        $formIds[] = $ing["id"];
+foreach ($ingredients as $i) {
+    if (!empty($i["id"])) {
+        $formIngredientIds[] = $i["id"];
     }
 }
 
-// ----- VERWIJDER ingredienten die niet meer bestaan -----
-foreach ($existingIngs as $oldId) {
-    if (!in_array($oldId, $formIds)) {
+// Verwijderen
+foreach ($existing as $oldId) {
+    if (!in_array($oldId, $formIngredientIds)) {
         $stmt = $conn->prepare("DELETE FROM ingredients WHERE ingredientId = ?");
         $stmt->execute([$oldId]);
     }
 }
 
-// ----- UPDATE of INSERT ingredienten -----
+// Update/Insert
 foreach ($ingredients as $ing) {
-    // Bestehande update
-    if (isset($ing["id"]) && !empty($ing["id"])) {
+    if (!empty($ing["id"])) {
 
         $stmt = $conn->prepare("
-            UPDATE ingredients 
+            UPDATE ingredients
             SET name = :name, quantity = :quantity
             WHERE ingredientId = :id
         ");
 
         $stmt->execute([
-            ":name" => $ing["name"],
+            ":name"     => $ing["name"],
             ":quantity" => $ing["quantity"],
-            ":id" => $ing["id"]
+            ":id"       => $ing["id"]
         ]);
 
     } else {
-        // Nieuwe ingredient toevoegen
+
         $stmt = $conn->prepare("
             INSERT INTO ingredients (recipeId, name, quantity)
             VALUES (:recipeId, :name, :quantity)
@@ -146,30 +143,26 @@ foreach ($ingredients as $ing) {
 
         $stmt->execute([
             ":recipeId" => $recipeId,
-            ":name" => $ing["name"],
+            ":name"     => $ing["name"],
             ":quantity" => $ing["quantity"]
         ]);
     }
 }
 
-// =====================================================
-// ===================== STAPPEN =======================
-// =====================================================
-
-// 1. Haal bestaande step IDs
+// STEPS UPDATE
 $stmt = $conn->prepare("SELECT stepId FROM steps WHERE recipeId = ?");
 $stmt->execute([$recipeId]);
 $existingSteps = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-// IDs in formulier
 $formStepIds = [];
-foreach ($steps as $st) {
-    if (!empty($st["id"])) {
-        $formStepIds[] = $st["id"];
+
+foreach ($steps as $step) {
+    if (!empty($step["id"])) {
+        $formStepIds[] = $step["id"];
     }
 }
 
-// ----- VERWIJDER stappen die weg zijn -----
+// Verwijderen
 foreach ($existingSteps as $oldId) {
     if (!in_array($oldId, $formStepIds)) {
         $stmt = $conn->prepare("DELETE FROM steps WHERE stepId = ?");
@@ -177,40 +170,42 @@ foreach ($existingSteps as $oldId) {
     }
 }
 
-// ----- UPDATE / INSERT stappen -----
-$stepNumber = 1;
+// Insert / Update
+$number = 1;
 
-foreach ($steps as $step) {
+foreach ($steps as $st) {
 
-    if (!empty($step["id"])) {
-        // UPDATE
+    if (!empty($st["id"])) {
+
         $stmt = $conn->prepare("
-            UPDATE steps 
-            SET instruction = :instruction, stepNumber = :number
+            UPDATE steps
+            SET instruction = :instruction,
+                stepNumber = :stepNumber
             WHERE stepId = :id
         ");
+
         $stmt->execute([
-            ":instruction" => $step["instruction"],
-            ":number" => $stepNumber,
-            ":id" => $step["id"]
+            ":instruction" => $st["instruction"],
+            ":stepNumber"  => $number,
+            ":id"          => $st["id"]
         ]);
 
     } else {
-        // INSERT
+
         $stmt = $conn->prepare("
             INSERT INTO steps (recipeId, instruction, stepNumber)
-            VALUES (:recipeId, :instruction, :number)
+            VALUES (:recipeId, :instruction, :stepNumber)
         ");
+
         $stmt->execute([
-            ":recipeId" => $recipeId,
-            ":instruction" => $step["instruction"],
-            ":number" => $stepNumber
+            ":recipeId"   => $recipeId,
+            ":instruction" => $st["instruction"],
+            ":stepNumber"  => $number
         ]);
     }
 
-    $stepNumber++;
+    $number++;
 }
 
-// === KLAAR ===
 header("Location: ../profile.php");
 exit;

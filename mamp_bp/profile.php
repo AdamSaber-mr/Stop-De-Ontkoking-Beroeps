@@ -6,6 +6,11 @@ if (session_status() === PHP_SESSION_NONE) {
 } // <-- essentieel om $_SESSION te gebruiken
 global $conn;
 
+if (!isset($_SESSION['userid'])) {
+    header("Location: ../login.php?error=not_logged_in");
+    exit;
+}
+
 $userId = $_SESSION['userid'];
 
 $stmt = $conn->prepare("SELECT usersId, usersName, usersEmail, usersUid FROM users WHERE usersId = ?");

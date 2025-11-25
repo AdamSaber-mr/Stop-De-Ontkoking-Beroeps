@@ -49,18 +49,15 @@ $allTags = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <form method="post" action="change_proces.php">
 
-    <!-- Titel -->
     <label for="title">Titel:</label>
     <input type="text" name="title" id="title"
            value="<?= htmlspecialchars($resultaat['recipe']['title']) ?>">
 
-    <!-- Beschrijving -->
     <label for="description">Beschrijving:</label>
     <textarea name="description" id="description" rows="3"><?=
         htmlspecialchars($resultaat['recipe']['description'])
         ?></textarea>
 
-    <!-- Categorie -->
     <label for="category">Categorie:</label>
     <select name="categoryId" id="category" required>
         <?php foreach ($categories as $cat): ?>
@@ -71,7 +68,6 @@ $allTags = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     </select>
 
-    <!-- Tags -->
     <label>Tags:</label>
     <div class="tags-edit">
         <?php foreach ($allTags as $tag): ?>
@@ -84,7 +80,6 @@ $allTags = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     </div>
 
-    <!-- Ingrediënten -->
     <h2>Ingrediënten</h2>
     <div id="ingredients-wrapper">
         <?php foreach ($resultaat['ingredients'] as $i => $ing): ?>
@@ -101,7 +96,6 @@ $allTags = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <button type="button" id="add-ingredient-btn">+ Ingrediënt toevoegen</button>
 
-    <!-- Stappen -->
     <h2>Bereidingsstappen</h2>
     <div id="steps-wrapper">
         <?php foreach ($resultaat['steps'] as $s => $step): ?>
@@ -117,7 +111,6 @@ $allTags = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <button type="button" id="add-step-btn">+ Stap toevoegen</button>
 
-    <!-- Hidden -->
     <input type="hidden" name="token" value="<?= $token ?>">
     <input type="hidden" name="id" value="<?= $resultaat['recipe']['recipeId'] ?>">
 

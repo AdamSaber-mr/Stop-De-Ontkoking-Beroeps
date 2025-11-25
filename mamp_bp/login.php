@@ -30,6 +30,9 @@ include_once './header.php';
                 else if ($_GET['error'] === 'wrongloginpassword') {
                     echo "<p>Incorrect login password information!</p>";
                 }
+                else if ($_GET['error'] === 'not_logged_in') {
+                    echo "<p>You are not logged in!</p>";
+                }
             }
             ?>
         </section>

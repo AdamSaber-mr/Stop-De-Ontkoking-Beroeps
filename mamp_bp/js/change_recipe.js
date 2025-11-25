@@ -2,7 +2,6 @@
 document.getElementById("add-ingredient-btn").addEventListener("click", function () {
     const wrapper = document.getElementById("ingredients-wrapper");
 
-    // Maak een nieuwe rij
     const row = document.createElement("div");
     row.classList.add("ingredient-row");
 

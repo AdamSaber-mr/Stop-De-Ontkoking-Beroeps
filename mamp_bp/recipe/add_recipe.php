@@ -1,8 +1,15 @@
 <?php
 require '../includes/dbh.inc.php';
-session_start();
-
+// Start alleen een sessie als er nog geen actief is
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+} // <-- essentieel om $_SESSION te gebruiken
 global $conn;
+
+if (!isset($_SESSION['userid'])) {
+    header("Location: ../login.php?error=not_logged_in");
+    exit;
+}
 
 // --- Categories ophalen ---
 $stmt = $conn->prepare("SELECT * FROM categories ORDER BY name ASC");
@@ -63,6 +70,10 @@ $tags = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 </label>
             <?php endforeach; ?>
         </div>
+
+        <!-- Image URL -->
+        <label for="imagePath">Image URL</label>
+        <input type="url" name="imagePath" id="imagePath" placeholder="https://example.com/image.jpg" required>
 
         <!-- Ingrediënten -->
         <h2>Ingrediënten</h2>

@@ -1,6 +1,11 @@
 <?php
-include_once './header.php';
-include 'includes/recepies.inc.php';
+
+require './includes/dbh.inc.php';
+include './header.php';
+include './includes/recipes_db.inc.php';
+
+global $data;
+
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -13,7 +18,6 @@ include 'includes/recepies.inc.php';
     </h1>
 </div>
 
-<!-- Catogories -->
 <div class="category-container">
     <div class="title-search-container" data-aos="fade-down">
         <h1>Category</h1>
@@ -68,27 +72,14 @@ include 'includes/recepies.inc.php';
 
 <div id="banner-2" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
     <img src="images/duties-of-a-chef.jpg">
-
-    <?php if (isset($_SESSION['useruid'])): ?>
-        <h1 style="bottom: -10% !important;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-            Get<br> <span class="highlight">Cooking!</span>
-        </h1>
-        <button data-aos="fade-up" onclick="goToUrl('overview.php?catogory_id=<?= $random_id; ?>&catogory_name=<?= $category_name; ?>')" data-aos-duration="1000" data-aos-delay="0">
-            Explore Recipes <i class="fas fa-utensils"></i>
-        </button>
-    <?php else: ?>
-        <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-            Login om <span class="highlight">recepten<br></span> toe te voegen
-        </h1>
-        <button data-aos="fade-up" onclick="goToUrl('login.php')" data-aos-duration="1000" data-aos-delay="0">
-            Login <i class="fas fa-right-to-bracket"></i>
-        </button>
-    <?php endif; ?>
+    <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+        Login om <span class="highlight">recepten<br></span> toe te voegen
+    </h1>
+    <button data-aos="fade-up" onclick="goToUrl('login.php')" data-aos-duration="1000" data-aos-delay="0">
+        Login <i class="fas fa-right-to-bracket"></i>
+    </button>
 </div>
 
-
-
-<!-- Trending -->
 <div class="category-container">
     <div class="title-search-container" data-aos="fade-down">
         <h1>Trending</h1>
@@ -106,7 +97,7 @@ include 'includes/recepies.inc.php';
                 ?>
                 <a href="shorts.php?recept_id=<?= $item["id"] ?>" class="category-item" data-aos="fade-up" data-aos-delay="0">
                     <div class="category-header">
-                        <img src="images/<?php echo $item['img']; ?>" alt="Category Icon">
+                        <img src="<?php echo $item['img']; ?>" alt="Category Icon">
                     </div>
                     <h2 class="category-title"><?php echo $item['title']; ?></h2>
                     <p class="category-description">

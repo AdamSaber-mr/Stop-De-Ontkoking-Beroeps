@@ -3,6 +3,11 @@ include 'includes/dbh.inc.php';
 include_once './header.php';
 global $conn;
 
+// Start alleen een sessie als er nog geen actief is
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+} // <-- essentieel om $_SESSION te gebruiken
+
 $category_id = isset($_GET['catogory_id']) ? (int)$_GET['catogory_id'] : null;
 $recept_id = isset($_GET['recept_id']) ? (int)$_GET['recept_id'] : null;
 
@@ -80,7 +85,7 @@ if (empty($item_to_add)) {
             <?php $active_class = $first ? "active" : ""; ?>
             <div class="short <?= $active_class ?>">
                 <h1><?= htmlspecialchars($item["title"]) ?></h1>
-                <img src="images/<?= htmlspecialchars($item["img"]) ?>" alt="<?= htmlspecialchars($item["title"]) ?>">
+                <img src="<?= htmlspecialchars($item["img"]) ?>" alt="<?= htmlspecialchars($item["title"]) ?>">
             </div>
             <?php $first = false; ?>
         <?php endforeach; ?>

@@ -1,75 +1,119 @@
 <?php
 
-$data = [];
+// Sessie starten
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Database verbinding
+require './includes/dbh.inc.php';
 global $conn;
 
+$data = [];
+
 try {
-    // 1) Haal alle recipes op (optioneel: limit/pagination)
-    $stmt = $conn->prepare("SELECT recipeId, usersId, title, description, categoryId, imagePath, createdAt, updatedAt FROM recipes ORDER BY createdAt DESC");
+
+    // Alle recepten ophalen
+    $sql = "SELECT recipeId, usersId, title, description, categoryId, imagePath, createdAt, updatedAt 
+            FROM recipes 
+            ORDER BY createdAt DESC";
+
+    $stmt = $conn->prepare($sql);
     $stmt->execute();
     $recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach ($recipes as $r) {
-        $recipeId = $r['recipeId'];
+    // Elk recept verwerken
+    foreach ($recipes as $recipe) {
 
-        // 2) Ingrediënten ophalen
-        $stmtIng = $conn->prepare("SELECT name, quantity FROM ingredients WHERE recipeId = ? ORDER BY ingredientId ASC");
+        $recipeId = $recipe['recipeId'];
+
+        // INGREDIENTS OPHALEN
+        $stmtIng = $conn->prepare("
+            SELECT name, quantity 
+            FROM ingredients 
+            WHERE recipeId = ?
+            ORDER BY ingredientId ASC
+        ");
+
         $stmtIng->execute([$recipeId]);
-        $ingredientsRows = $stmtIng->fetchAll(PDO::FETCH_ASSOC);
+        $ingredientRows = $stmtIng->fetchAll(PDO::FETCH_ASSOC);
+
         $ingredients = [];
-        foreach ($ingredientsRows as $ing) {
-            $ingredients[] = ($ing['quantity'] ? $ing['quantity'] . ' ' : '') . $ing['name'];
+
+        foreach ($ingredientRows as $row) {
+
+            $ingredientString = "";
+
+            if (!empty($row['quantity'])) {
+                $ingredientString = $row['quantity'] . " " . $row['name'];
+            } else {
+                $ingredientString = $row['name'];
+            }
+
+            $ingredients[] = $ingredientString;
         }
 
-        // 3) Stappen ophalen
-        $stmtSteps = $conn->prepare("SELECT stepNumber, instruction FROM steps WHERE recipeId = ? ORDER BY stepNumber ASC");
+        // STEPS OPHALEN
+        $stmtSteps = $conn->prepare("
+            SELECT stepNumber, instruction 
+            FROM steps 
+            WHERE recipeId = ?
+            ORDER BY stepNumber ASC
+        ");
+
         $stmtSteps->execute([$recipeId]);
         $stepsRows = $stmtSteps->fetchAll(PDO::FETCH_ASSOC);
+
         $steps = [];
-        foreach ($stepsRows as $st) {
+
+        foreach ($stepsRows as $stepRow) {
             $steps[] = [
-                'stepNumber' => $st['stepNumber'],
-                'instructions' => $st['instruction']
+                "stepNumber"   => $stepRow["stepNumber"],
+                "instructions" => $stepRow["instruction"]
             ];
         }
 
-        // 4) Tags ophalen (names)
+        // TAGS OPHALEN
         $stmtTags = $conn->prepare("
-            SELECT t.name 
+            SELECT t.name
             FROM tags t
             JOIN recipe_tags rt ON rt.tagId = t.tagId
             WHERE rt.recipeId = ?
             ORDER BY t.name ASC
         ");
+
         $stmtTags->execute([$recipeId]);
         $tagRows = $stmtTags->fetchAll(PDO::FETCH_COLUMN);
-        // normaliseer tag-waarden (lowercase) als je frontend dat verwacht
-        $tags = array_map('strtolower', $tagRows);
 
-        // 5) Image pad fallback: gebruik imagePath of placeholder
-        $img = $r['imagePath'] ? $r['imagePath'] : 'recepten/placeholder.jpg';
+        // lowercase tags
+        $tags = [];
+        foreach ($tagRows as $tag) {
+            $tags[] = strtolower($tag);
+        }
 
-        // 6) categorie id (houd integer)
-        $category_id = $r['categoryId'];
+        // IMAGE PAD FALLBACK
+        $img = "recepten/placeholder.jpg";
 
-        // 7) Bouw item in precies dezelfde vorm als jouw oude $data array
+        if (!empty($recipe["imagePath"])) {
+            $img = $recipe["imagePath"];
+        }
+
         $data[] = [
-            'id' => (string)$recipeId,
-            'category_id' => (string)$category_id,
-            'title' => $r['title'],
-            'img' => $img,
-            'description' => $r['description'],
-            'tags' => $tags,
-            'steps' => $steps,
-            'ingredients' => $ingredients,
-            'createdAt' => $r['createdAt'],
-            'updatedAt' => $r['updatedAt'],
-            'usersId' => $r['usersId']
+            "id"          => (string)$recipeId,
+            "category_id" => (string)$recipe["categoryId"],
+            "title"       => $recipe["title"],
+            "img"         => $img,
+            "description" => $recipe["description"],
+            "tags"        => $tags,
+            "steps"       => $steps,
+            "ingredients" => $ingredients,
+            "createdAt"   => $recipe["createdAt"],
+            "updatedAt"   => $recipe["updatedAt"],
+            "usersId"     => $recipe["usersId"]
         ];
     }
 
 } catch (PDOException $e) {
-    // Foutafhandeling - debug tijdelijk
-    error_log("recipes_db.inc.php error: " . $e->getMessage());
-    $data = []; // fallback
+    error_log("Recipe DB Error: " . $e->getMessage());
+    $data = [];
 }

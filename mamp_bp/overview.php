@@ -3,6 +3,11 @@ include_once './header.php';
 require './includes/dbh.inc.php';
 global $conn;
 
+// Start alleen een sessie als er nog geen actief is
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+} // <-- essentieel om $_SESSION te gebruiken
+
 $category_id = isset($_GET['catogory_id']) ? (int)$_GET['catogory_id'] : null;
 $catogory_name = isset($_GET['catogory_name']) ? $_GET['catogory_name'] : null;
 $filterTag = isset($_GET['tag']) ? trim($_GET['tag']) : null;
@@ -96,14 +101,11 @@ sort($all_tags);
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    if (window.innerWidth > 768) {
-        AOS.init({
-            duration: 700,
-            once: true
-        });
-    }
+    AOS.init({
+        duration: 700,  
+        once: true      
+    });
 </script>
-
 
 
 <div id="overview_parrent">
@@ -137,7 +139,7 @@ sort($all_tags);
          data-aos-delay="<?= $index * 100 ?>">
 
         <div class="recepy-header">
-            <img src="images/<?= htmlspecialchars($item["img"]) ?>" alt="<?= htmlspecialchars($item["title"]) ?>">
+            <img src="<?= htmlspecialchars($item["img"]) ?>" alt="<?= htmlspecialchars($item["title"]) ?>">
         </div>
 
         <h1 class="recepy-title"><?= htmlspecialchars($item['title']) ?></h1>
