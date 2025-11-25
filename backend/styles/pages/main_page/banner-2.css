@@ -21,7 +21,7 @@
 
 #banner-2 h1 {
     position: absolute;
-    bottom: -10%;
+    bottom: -30%;
     left: 30%;
     width: clamp(15vw, 50%, 50vw); /* min 15vw, preferred 50%, max 50vw */
     font-size: clamp(4rem, 4vw, 6rem); /* responsive font size */
