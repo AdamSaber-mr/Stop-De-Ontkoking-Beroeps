@@ -25,6 +25,16 @@ sort($all_tags);
 ?>
 
 <link rel="stylesheet" href="./styles/pages/overview_page/overview_page.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 700,   // animation speed
+        once: true       // only animate once
+    });
+</script>
+
 
 <div id="overview_parrent">
 
@@ -50,11 +60,16 @@ sort($all_tags);
 
 
 <div id="recepy_wrapper">
-<?php foreach ($item_to_add as $item) : ?>
-    <div class="recepy" data-id="<?= htmlspecialchars($item['id']) ?>">
+<?php foreach ($item_to_add as $index => $item) : ?>
+    <div class="recepy" 
+         data-id="<?= htmlspecialchars($item['id']) ?>" 
+         data-aos="fade-up"
+         data-aos-delay="<?= $index * 100 ?>">
+
         <div class="recepy-header">
             <img src="images/<?= htmlspecialchars($item["img"]) ?>" alt="<?= htmlspecialchars($item["title"]) ?>">
         </div>
+
         <h1 class="recepy-title"><?= htmlspecialchars($item['title']) ?></h1>
 
         <?php if (!empty($item["tags"])): ?>
@@ -69,6 +84,7 @@ sort($all_tags);
     </div>
 <?php endforeach; ?>
 </div>
+
 
 <script type="module" defer>
     import { search } from "./js/search.js"
@@ -124,10 +140,12 @@ function showCatogory(category) {
 
         if (shouldShow) {
             recepy.style.display = "block";
+            recepy.classList.remove("aos-animate");
         } else {
             recepy.style.display = "none";
-        }
+        }  
     });
+    AOS.refreshHard();
 }
 </script>
 

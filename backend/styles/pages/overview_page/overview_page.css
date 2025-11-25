@@ -137,6 +137,7 @@ html, body {
 .recepy{
     flex: 0 0 auto;
     /* width: clamp(270px, 23vw, 450px); */
+    max-width: 450px;
     width: 100%;
     height: clamp(150px, 70vh, 400px);
     background-color: wheat;
