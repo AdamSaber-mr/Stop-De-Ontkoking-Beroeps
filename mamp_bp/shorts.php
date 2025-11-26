@@ -1,136 +1,205 @@
 <?php
-include 'includes/dbh.inc.php';
-include_once './header.php';
+include './includes/dbh.inc.php';
+include './header.php';
 global $conn;
 
-// Start alleen een sessie als er nog geen actief is
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-} // <-- essentieel om $_SESSION te gebruiken
+}
+$category_id = '';
+// ---- Variabelen ophalen uit URL ----
+if ( isset($_GET['catogory_id']) ) {
+    $category_id = $_GET['catogory_id'];
+};
+$recept_id   = $_GET['recept_id'];
 
-$category_id = isset($_GET['catogory_id']) ? (int)$_GET['catogory_id'] : null;
-$recept_id = isset($_GET['recept_id']) ? (int)$_GET['recept_id'] : null;
-
+// Hier alle recepten opslaan ook de random recepten
 $item_to_add = [];
 
+// -----------------------------
+// Functie: haal 1 recept op
+// -----------------------------
+function getRecipeById($conn, $id) {
+    $sql = "SELECT recipeId, title, description, categoryId, imagePath 
+            FROM recipes 
+            WHERE recipeId = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+
+// --------------------------------------------
+// Functie: haal alle ingredients van recept
+// --------------------------------------------
+function getIngredients($conn, $recipeId) {
+    $sql = "SELECT name, quantity 
+            FROM ingredients 
+            WHERE recipeId = ?
+            ORDER BY ingredientId ASC";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$recipeId]);
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $list = [];
+
+    foreach ($rows as $i) {
+        if (!empty($i["quantity"])) {
+            $list[] = $i["quantity"] . " " . $i["name"];
+        } else {
+            $list[] = $i["name"];
+        }
+    }
+
+    return $list;
+}
+
+// --------------------------------------------
+// Functie: haal steps op van recept
+// --------------------------------------------
+function getSteps($conn, $recipeId) {
+    $sql = "SELECT stepNumber, instruction
+            FROM steps
+            WHERE recipeId = ?
+            ORDER BY stepNumber ASC";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$recipeId]);
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $steps = [];
+
+    foreach ($rows as $s) {
+        $steps[] = [
+                "stepNumber"   => $s["stepNumber"],
+                "instructions" => $s["instruction"]
+        ];
+    }
+
+    return $steps;
+}
+
+// -------------------------------------------------------
+// Stap 1: Gekozen recept ophalen en toevoegen als er een id
+// -------------------------------------------------------
 if ($recept_id) {
-    // Haal het gekozen recept
-    $stmt = $conn->prepare("SELECT recipeId, title, description, categoryId, imagePath FROM recipes WHERE recipeId = ?");
-    $stmt->execute([$recept_id]);
-    $r = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $r = getRecipeById($conn, $recept_id);
 
     if ($r) {
-        // ingredients
-        $stmtIng = $conn->prepare("SELECT name, quantity FROM ingredients WHERE recipeId = ?");
-        $stmtIng->execute([$recept_id]);
-        $ingredientsRows = $stmtIng->fetchAll(PDO::FETCH_ASSOC);
-        $ingredients = array_map(function($i){ return ($i['quantity']? $i['quantity'].' ':'') . $i['name']; }, $ingredientsRows);
-
-        // steps
-        $stmtSteps = $conn->prepare("SELECT stepNumber, instruction FROM steps WHERE recipeId = ? ORDER BY stepNumber ASC");
-        $stmtSteps->execute([$recept_id]);
-        $stepsRows = $stmtSteps->fetchAll(PDO::FETCH_ASSOC);
-        $steps = [];
-        foreach ($stepsRows as $st) $steps[] = ['stepNumber'=>$st['stepNumber'],'instructions'=>$st['instruction']];
-
-        $img = $r['imagePath'] ? $r['imagePath'] : 'recepten/placeholder.jpg';
-
         $item_to_add[] = [
-                'id' => (string)$r['recipeId'],
-                'category_id' => (string)$r['categoryId'],
-                'title' => $r['title'],
-                'img' => $img,
-                'description' => $r['description'],
-                'tags' => [], // optioneel: haal tags als nodig
-                'steps' => $steps,
-                'ingredients' => $ingredients
+                "id"          => (int)$r["recipeId"],
+                "category_id" => (int)$r["categoryId"],
+                "title"       => $r["title"],
+                "img"         => $r["imagePath"] ?: "recepten/placeholder.jpg",
+                "description" => $r["description"],
+                "ingredients" => getIngredients($conn, $r["recipeId"]),
+                "steps"       => getSteps($conn, $r["recipeId"]),
         ];
     }
 }
 
-// fallback: toon een aantal random recipes als $item_to_add leeg is
-if (empty($item_to_add)) {
-    $stmt = $conn->prepare("SELECT recipeId, title, description, categoryId, imagePath FROM recipes ORDER BY RAND() LIMIT 6");
-    $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($rows as $r) {
-        $id = $r['recipeId'];
-        // basic ingredients + steps as above or leave empty
-        $item_to_add[] = [
-                'id' => (string)$id,
-                'category_id' => (string)$r['categoryId'],
-                'title' => $r['title'],
-                'img' => $r['imagePath'] ? $r['imagePath'] : 'recepten/placeholder.jpg',
-                'description' => $r['description'],
-                'tags' => [],
-                'steps' => [],
-                'ingredients' => []
-        ];
-    }
+// -------------------------------------------------------------------
+// Stap 2: Random extra recepten ophalen
+// -------------------------------------------------------------------
+$sql = "SELECT recipeId, title, description, categoryId, imagePath FROM recipes ";
+$params = [];
+
+if ($recept_id) {
+    $sql .= "WHERE recipeId != ? ";
+    $params[] = $recept_id;
+}
+
+$sql .= "ORDER BY RAND() LIMIT 10";
+
+$stmt = $conn->prepare($sql);
+$stmt->execute($params);
+$randomRecipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// voeg alle random recepten toe
+foreach ($randomRecipes as $r) {
+
+    $rid = (int)$r["recipeId"];
+
+    $item_to_add[] = [
+            "id"          => $rid,
+            "category_id" => (int)$r["categoryId"],
+            "title"       => $r["title"],
+            "img"         => $r["imagePath"] ?: "recepten/placeholder.jpg",
+            "description" => $r["description"],
+            "ingredients" => getIngredients($conn, $rid),
+            "steps"       => getSteps($conn, $rid)
+    ];
 }
 ?>
-
-
 <script>
-    document.getElementById("header").classList.add("shrink")
+    document.getElementById("header").classList.add("shrink");
 </script>
-
 <link rel="stylesheet" href="styles/shorts.css">
 
-
 <div id="parrent_short_container">
+
     <div id="short_container">
         <?php $first = true; ?>
         <?php foreach ($item_to_add as $item): ?>
-            <?php $active_class = $first ? "active" : ""; ?>
-            <div class="short <?= $active_class ?>">
+
+            <div class="short <?= $first ? 'active' : '' ?>">
                 <h1><?= htmlspecialchars($item["title"]) ?></h1>
-                <img src="<?= htmlspecialchars($item["img"]) ?>" alt="<?= htmlspecialchars($item["title"]) ?>">
+                <img src="<?= htmlspecialchars($item["img"]) ?>" alt="">
             </div>
+
             <?php $first = false; ?>
         <?php endforeach; ?>
     </div>
 
+    <!-- info box rechts -->
     <div id="recepy">
         <?php if (!empty($item_to_add)): ?>
-            <?php 
-                // use the first recipe as default display
-                $recipe = $item_to_add[0];
-            ?>
-            <h2><?= htmlspecialchars($recipe["title"]) ?></h2>
-            <p><?= htmlspecialchars($recipe["description"]) ?></p>
+            <?php $firstRecipe = $item_to_add[0]; ?>
+
+            <h2><?= htmlspecialchars($firstRecipe["title"]) ?></h2>
+            <p><?= htmlspecialchars($firstRecipe["description"]) ?></p>
 
             <h3>Ingredients</h3>
             <ul>
-                <?php foreach ($recipe["ingredients"] as $ingredient): ?>
-                    <li><?= htmlspecialchars($ingredient) ?></li>
+                <?php foreach ($firstRecipe["ingredients"] as $ing): ?>
+                    <li><?= htmlspecialchars($ing) ?></li>
                 <?php endforeach; ?>
             </ul>
 
-            <?php if (!empty($recipe["steps"])): ?>
+            <?php if (!empty($firstRecipe["steps"])): ?>
                 <h3>Steps</h3>
                 <ol>
-                    <?php foreach ($recipe["steps"] as $step): ?>
+                    <?php foreach ($firstRecipe["steps"] as $step): ?>
                         <li>
-                            <strong>Step <?= htmlspecialchars($step["stepNumber"]) ?>:</strong>
+                            <strong>Step <?= $step["stepNumber"] ?>:</strong>
                             <?= htmlspecialchars($step["instructions"]) ?>
                         </li>
                     <?php endforeach; ?>
                 </ol>
             <?php endif; ?>
+
         <?php endif; ?>
     </div>
 
+
+    <!-- Buttons -->
     <div id="button_container">
         <div id="favroute" class="short_button" onclick="heart()">
-            <img src="images/heart_unfilled.png" alt="Favorite">
+            <img src="images/heart_unfilled.png" alt="">
         </div>
 
         <div id="info" class="short_button" onclick="toggle_recepy_window()">
-            <img src="images/recepy.png" alt="Info">
+            <img src="images/recepy.png" alt="">
         </div>
     </div>
 </div>
 
+
+<!-- recepten naar js sturen -->
+<script>
+    const ITEMS = <?= json_encode($item_to_add) ?>;
+</script>
 
 <script src="js/shorts.js"></script>
