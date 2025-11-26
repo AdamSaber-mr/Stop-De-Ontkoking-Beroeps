@@ -38,4 +38,7 @@
     }
 </script>
 
+<script src="../js/header.js"></script>
+<script src="../js/admin.js"></script>
+
 </html>
