@@ -40,17 +40,17 @@ if (session_status() === PHP_SESSION_NONE) {
         <?php
         if (isset($_SESSION['useruid'])) {
             if ($_SESSION['role'] === 'user') {
-                echo "<li><a href='./profile.php'>Profile page</a></li>";
-                echo "<li><a href='./includes/logout.inc.php'>Log out</a></li>";
+                echo "<button id='profile-btn'><a href='./profile.php'>Profile page</a></button>";
+                echo "<button id='logout-btn'><a href='./includes/logout.inc.php'>Log out</a></button>";
             }
             if ($_SESSION['role'] === 'admin') {
-                echo "<li><a href='admin/admin.php'>Admin page</a></li>";
-                echo "<li><a href='./includes/logout.inc.php'>Log out</a></li>";
+                echo "<button id='admin-btn'><a href='admin/admin.php'>Admin page</a></button>";
+                echo "<button id='logout-btn'><a href='./includes/logout.inc.php'>Log out</a></button>";
             }
         }
         else {
-            echo "<li><a href='./signup.php'>Sign up</a></li>";
-            echo "<li><a href='./login.php'>Login</a></li>";
+            echo "<button id='signup-btn'><a href='./signup.php'>Sign up</a></button>";
+            echo "<button id='login-btn'><a href='./login.php'>Login</a></button>";
         }
         ?>
     </div>

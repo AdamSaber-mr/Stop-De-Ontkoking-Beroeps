@@ -1,8 +1,8 @@
 <?php
 
-require './includes/dbh.inc.php';
+// require './includes/dbh.inc.php';
 include './header.php';
-include './includes/recipes_db.inc.php';
+// include './includes/recipes_db.inc.php';
 
 global $data;
 
