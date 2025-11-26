@@ -1,111 +1,139 @@
-/* ===== GENERAL PAGE STYLE ===== */
 body {
-    font-family: "Inter", Arial, sans-serif;
-    background: #f5f7fb;
-    margin: 0;
-    padding: 40px;
-    color: #333;
+  font-family: "Inter", Arial, sans-serif;
+  background: linear-gradient(135deg, #f0f9f0 0%, #e2f2e2 100%);
+  margin: 0;
+  padding: 40px;
+  color: #333;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #222;
+.recipe-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 35px;
+  border-radius: 14px;
+  border: 2px solid #a7d7a8;
+  box-shadow: 0 8px 22px rgba(61, 142, 65, 0.12);
 }
 
-/* ===== TABLE WRAPPER ===== */
+h1.title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2d5a2f;
+}
+
 table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(61,142,65,0.15);
 }
 
-/* ===== TABLE HEADER ===== */
 thead {
-    background: #3b82f6;
-    color: white;
+  background: #3d8e41;
+  color: white;
 }
 
 thead th {
-    padding: 16px;
-    font-size: 1rem;
-    text-align: left;
+  padding: 16px;
+  font-size: 1rem;
+  text-align: left;
 }
 
-/* ===== TABLE BODY ===== */
 tbody td {
-    padding: 14px 16px;
-    border-bottom: 1px solid #e7e7e7;
-    font-size: 0.95rem;
+  padding: 14px 16px;
+  border-bottom: 1px solid #d1eed1;
+  font-size: 0.95rem;
 }
 
 tbody tr:nth-child(even) {
-    background: #f9fafc;
+  background: #f4fbf4;
 }
 
 tbody tr:hover {
-    background: #eef4ff;
-    transition: 0.2s;
+  background: #e9f9e9;
+  transform: translateY(-2px);
+  border-color: #95d095;
+  transition: 0.2s ease;
 }
 
-/* ===== NAVIGATION LINK BELOW EACH ROW ===== */
+.info-box {
+  background: #edf8ed;
+  padding: 18px;
+  border-left: 5px solid #3d8e41;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(61,142,65,0.08);
+  margin-bottom: 25px;
+}
+
+h2 {
+  color: #3d8e41;
+  font-size: 1.4rem;
+  border-bottom: 3px solid #cce8cc;
+  padding-bottom: 6px;
+  margin-top: 30px;
+  margin-bottom: 16px;
+}
+
+.tag {
+  display: inline-block;
+  background: #d7f0d7;
+  color: #276a2a;
+  padding: 7px 12px;
+  border-radius: 18px;
+  font-weight: 600;
+  border: 1px solid #bde3bd;
+  margin-right: 8px;
+  transition: 0.2s ease;
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  border-color: #95d095;
+  background: #e9f9e9;
+}
+
+.ingredients-list li,
+.steps-list li {
+  background: #f4fbf4;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #d1eed1;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(61,142,65,0.05);
+  transition: 0.2s ease;
+}
+
+.ingredients-list li:hover,
+.steps-list li:hover {
+  transform: translateY(-2px);
+  border-color: #95d095;
+  background: #e9f9e9;
+}
+
 .navLinks {
-    margin-top: 20px;
-    text-align: center;
+  margin-top: 28px;
+  text-align: center;
 }
 
 .navLinks a {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #2563eb;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    transition: 0.25s;
+  display: inline-block;
+  background: #3d8e41;
+  padding: 12px 18px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(61,142,65,0.15);
+  transition: 0.2s ease;
 }
 
 .navLinks a:hover {
-    background: #1e4fcf;
-    transform: translateY(-2px);
+  background: #2f6f30;
+  transform: translateY(-2px);
 }
-
-/* ===== RESPONSIVE TABLE (MOBILE) ===== */
-@media (max-width: 850px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-
-    thead {
-        display: none;
-    }
-
-    tbody tr {
-        margin-bottom: 20px;
-        background: white;
-        border-radius: 10px;
-        padding: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    }
-
-    tbody td {
-        border: none;
-        padding: 10px 8px;
-        position: relative;
-    }
-
-    tbody td::before {
-        content: attr(data-label);
-        font-weight: 700;
-        color: #555;
-        display: block;
-        margin-bottom: 4px;
-    }
-}
-
