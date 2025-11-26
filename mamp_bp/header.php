@@ -74,8 +74,8 @@ if (session_status() === PHP_SESSION_NONE) {
     
     <ul class="nav-menu">
         <li><a href="index.php">Home</a></li>
-        <li>Browse</li>
-        <li>Watch</li>
+        <li><a href="overview.php?catogory_id=1&catogory_name=Breakfast">Browse</a></li>
+        <li><a href="shorts.php">Watch</li>
         <?php
         if (!isset($_SESSION['useruid'])) {
             echo "<li><a href='login.php'>Login</a></li>";
