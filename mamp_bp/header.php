@@ -32,8 +32,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <ul id="nav-menu">
         <li><a href="index.php">Home</a></li>
-        <li>Browse</li>
-        <li>Watch</li>
+        <li><a href="overview.php?catogory_id=1&catogory_name=Breakfast">Browse</a></li>
+        <li><a href="shorts.php">Watch</li>
     </ul>
 
     <div id="account-section">
