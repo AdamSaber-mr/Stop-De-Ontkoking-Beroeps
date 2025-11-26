@@ -1,3 +1,5 @@
+<?php include './header.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +17,6 @@
     <link rel="stylesheet" href="../styles/admin.css">
 </head>
 <body>
-    <?php include './header.php'; ?>
 
     <div class="admin-shell">
         <aside class="admin-sidebar" aria-label="Admin navigatie">
