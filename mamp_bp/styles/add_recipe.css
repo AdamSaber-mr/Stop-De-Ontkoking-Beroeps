@@ -1,5 +1,3 @@
-/* === CookUp – Recept Toevoegen Page === */
-
 body {
     background: linear-gradient(135deg, #f7fcfa, #eef9f4);
     font-family: 'Poppins', sans-serif;
@@ -7,8 +5,6 @@ body {
     padding: 0;
     color: #2e2e2e;
 }
-
-/* === Wrapper === */
 
 .add-recipe-wrapper {
     max-width: 900px;
@@ -27,8 +23,6 @@ h1 {
     margin-bottom: 2rem;
     font-weight: 700;
 }
-
-/* === Form Layout === */
 
 .recipe-form label {
     font-weight: 600;
@@ -58,8 +52,6 @@ h1 {
     outline: none;
 }
 
-/* === Tags === */
-
 .tag-container {
     margin-top: 0.7rem;
     padding: 1rem;
@@ -86,8 +78,6 @@ h1 {
     background: #c9f2e7;
 }
 
-/* === Section Titles === */
-
 h2 {
     margin-top: 2rem;
     color: #009970;
@@ -96,8 +86,6 @@ h2 {
     border-bottom: 2px solid #e3f5ee;
     padding-bottom: 0.5rem;
 }
-
-/* === Repeated Fields Styling === */
 
 .ingredient-row,
 .step-row {
@@ -114,8 +102,6 @@ h2 {
 .step-row textarea {
     flex: 1;
 }
-
-/* Remove button */
 
 .remove-btn {
     background: #ff5a5f;
@@ -134,8 +120,6 @@ h2 {
     transform: scale(1.05);
 }
 
-/* === Add Button === */
-
 .btn-add {
     margin-top: 1rem;
     padding: 0.7rem 1.4rem;
@@ -153,8 +137,6 @@ h2 {
     background: #009970;
     transform: translateY(-2px);
 }
-
-/* === Submit Button === */
 
 .btn-submit {
     margin-top: 2.4rem;
@@ -175,8 +157,6 @@ h2 {
     transform: translateY(-2px);
 }
 
-/* === Link back === */
-
 .navLinks {
     margin-top: 1.5rem;
     text-align: center;
@@ -193,14 +173,10 @@ h2 {
     color: #00a478;
 }
 
-/* === Animations === */
-
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-/* === Responsive === */
 
 @media (max-width: 700px) {
 

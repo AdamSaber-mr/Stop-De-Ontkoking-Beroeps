@@ -1,4 +1,4 @@
-// ========= INGREDIENT TOEVOEGEN =========
+// ingredienten toevoegen
 document.getElementById("add-ingredient-btn").addEventListener("click", function () {
     const wrapper = document.getElementById("ingredients-wrapper");
 
@@ -15,7 +15,7 @@ document.getElementById("add-ingredient-btn").addEventListener("click", function
     wrapper.appendChild(row);
 });
 
-// ========= STAP TOEVOEGEN =========
+// stap toevoegene
 document.getElementById("add-step-btn").addEventListener("click", function () {
     const wrapper = document.getElementById("steps-wrapper");
 
@@ -30,7 +30,7 @@ document.getElementById("add-step-btn").addEventListener("click", function () {
     wrapper.appendChild(row);
 });
 
-// ========= DELETE BUTTON WERKING =========
+// delet button
 document.addEventListener("click", function (event) {
     if (event.target.classList.contains("delete-btn")) {
         event.target.parentElement.remove();

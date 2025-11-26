@@ -9,7 +9,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Check login
 if (!isset($_SESSION['userid'])) {
     header("Location: ../login.php?error=not_logged_in");
     exit;
@@ -17,17 +16,14 @@ if (!isset($_SESSION['userid'])) {
 
 $usersId = $_SESSION['userid'];
 
-// Database
 require '../includes/dbh.inc.php';
 global $conn;
 
-// POST controleren
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo "Invalid request.";
     exit;
 }
 
-// Gegevens ophalen
 $title       = trim($_POST['title']);
 $description = trim($_POST['description']);
 $categoryId  = trim($_POST['categoryId']);
@@ -80,7 +76,7 @@ try {
 
     $recipeId = $conn->lastInsertId();
 
-    // Ingredients
+    // ingredients
     $stmtIng = $conn->prepare("
         INSERT INTO ingredients (recipeId, name, quantity)
         VALUES (:recipeId, :name, :quantity)

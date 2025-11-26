@@ -12,7 +12,6 @@
     --max-width: 700px;
 }
 
-/* --- Algemene layout --- */
 body {
     margin: 0;
     font-family: 'Poppins', 'Segoe UI', sans-serif;
@@ -24,7 +23,6 @@ body {
     padding: 3rem 1.2rem;
 }
 
-/* --- Container --- */
 .delete-container {
     background: var(--card);
     width: 100%;
@@ -40,7 +38,6 @@ body {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Titel --- */
 .delete-container h1 {
     text-align: center;
     font-size: clamp(1.6rem, 3vw, 2rem);
@@ -48,7 +45,6 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* --- Waarschuwings tekst --- */
 .warning-text {
     font-size: 1rem;
     background: rgba(231, 76, 60, 0.08);
@@ -64,7 +60,6 @@ body {
     font-weight: 700;
 }
 
-/* --- Gebruiker info --- */
 .user-info {
     background: #f9fdfc;
     border: 1px solid #e3eeec;
@@ -95,7 +90,6 @@ body {
     color: #2d4d43;
 }
 
-/* --- Knoppen --- */
 .button-group {
     display: flex;
     justify-content: center;
@@ -119,7 +113,6 @@ body {
     transform: translateY(-3px);
 }
 
-/* Verwijderen knop (rood) */
 .btn-danger {
     background: var(--danger);
     color: #fff;
@@ -130,7 +123,6 @@ body {
     box-shadow: 0 10px 24px rgba(231, 76, 60, 0.18);
 }
 
-/* Annuleren knop (grijs) */
 .btn-secondary {
     background: var(--secondary);
     color: #fff;
@@ -141,7 +133,6 @@ body {
     box-shadow: 0 10px 24px rgba(108, 117, 125, 0.15);
 }
 
-/* Geen resultaat */
 .no-result {
     text-align: center;
     background: #fafbfb;
@@ -156,7 +147,6 @@ body {
     color: var(--text);
 }
 
-/* Responsive */
 @media (max-width: 600px) {
     .delete-container {
         padding: 1.5rem 1.2rem;

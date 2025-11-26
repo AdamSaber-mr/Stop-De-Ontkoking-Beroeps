@@ -22,10 +22,12 @@ if (isset($_SESSION['fouten'])) {
     unset($_SESSION['fouten']); // zodat ze niet staan bij reload
 }
 
+// categorien ophalen
 $stmt = $conn->prepare("SELECT * FROM categories ORDER BY name ASC");
 $stmt->execute();
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// tags ophalen
 $stmt = $conn->prepare("SELECT * FROM tags ORDER BY name ASC");
 $stmt->execute();
 $allTags = $stmt->fetchAll(PDO::FETCH_ASSOC);

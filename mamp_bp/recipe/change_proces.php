@@ -3,12 +3,10 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Sessie
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Database connectie
 require '../includes/dbh.inc.php';
 global $conn;
 
@@ -50,7 +48,7 @@ if (!empty($errors)) {
     exit;
 }
 
-// RECIPE UPDATE
+// recipe updatee
 try {
 
     $stmt = $conn->prepare("
@@ -73,7 +71,7 @@ try {
     exit;
 }
 
-// UPDATE TAGS
+// update tags
 try {
     $conn->beginTransaction();
 
@@ -97,7 +95,7 @@ try {
     exit;
 }
 
-// INGREDIENTEN UPDATE
+// ingredienten update
 $stmt = $conn->prepare("SELECT ingredientId FROM ingredients WHERE recipeId = ?");
 $stmt->execute([$recipeId]);
 $existing = $stmt->fetchAll(PDO::FETCH_COLUMN);
@@ -149,7 +147,7 @@ foreach ($ingredients as $ing) {
     }
 }
 
-// STEPS UPDATE
+// steps update
 $stmt = $conn->prepare("SELECT stepId FROM steps WHERE recipeId = ?");
 $stmt->execute([$recipeId]);
 $existingSteps = $stmt->fetchAll(PDO::FETCH_COLUMN);

@@ -6,15 +6,24 @@ global $conn;
 // Start alleen een sessie als er nog geen actief is
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
-} // <-- essentieel om $_SESSION te gebruiken
+} // essentieel om $_SESSION te gebruiken
 
-$category_id = isset($_GET['catogory_id']) ? (int)$_GET['catogory_id'] : null;
-$catogory_name = isset($_GET['catogory_name']) ? $_GET['catogory_name'] : null;
-$filterTag = isset($_GET['tag']) ? trim($_GET['tag']) : null;
+$category_id = '';
+if ( isset($_GET['catogory_id']) ) {
+    $category_id = $_GET['catogory_id'];
+};
+$catogory_name = '';
+if ( isset($_GET['catogory_name']) ) {
+    $catogory_name = $_GET['catogory_name'];
+};
+$filterTag = '';
+if ( isset($_GET['tag']) ) {
+    $filterTag = $_GET['tag'];
+};
 
 $item_to_add = [];
 
-// Als we op tag filteren (via ?tag=gezond) -- JOIN met tags
+// tags filteren
 if ($filterTag) {
     $sql = "SELECT r.recipeId, r.title, r.description, r.categoryId, r.imagePath, r.createdAt
             FROM recipes r
@@ -36,7 +45,7 @@ if ($filterTag) {
     $stmt->execute([':cat' => $category_id]);
     $recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// anders: alle recipes (of een subset)
+// anders: alle recipes
 } else {
     $sql = "SELECT recipeId, title, description, categoryId, imagePath, createdAt
             FROM recipes
@@ -85,7 +94,7 @@ foreach ($recipes as $r) {
     ];
 }
 
-// Build $all_tags from items currently loaded (for sidebar)
+// Build $all_tags from items currently loaded
 $all_tags = [];
 foreach ($item_to_add as $item) {
     if (!empty($item['tags'])) {

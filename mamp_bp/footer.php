@@ -16,23 +16,6 @@
         });
     });
 
-
-    // document.addEventListener("DOMContentLoaded", () => {
-    //     const account = document.getElementById("account");
-    //     const dropdown = document.getElementById("header_ul");
-
-    //     account.addEventListener("click", (e) => {
-    //         e.stopPropagation();
-    //         dropdown.classList.toggle("show");
-    //     });
-
-    //     document.addEventListener("click", (e) => {
-    //         if (!account.contains(e.target) && !dropdown.contains(e.target)) {
-    //             dropdown.classList.remove("show");
-    //         }
-    //     });
-    // });
-
     function goToUrl(url) {
     window.location.href = url;
     }

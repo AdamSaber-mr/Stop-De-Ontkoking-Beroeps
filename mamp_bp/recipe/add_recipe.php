@@ -11,12 +11,12 @@ if (!isset($_SESSION['userid'])) {
     exit;
 }
 
-// --- Categories ophalen ---
+// categorie ophalen
 $stmt = $conn->prepare("SELECT * FROM categories ORDER BY name ASC");
 $stmt->execute();
 $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// --- Tags ophalen ---
+// tags ophalen
 $stmt2 = $conn->prepare("SELECT * FROM tags ORDER BY name ASC");
 $stmt2->execute();
 $tags = $stmt2->fetchAll(PDO::FETCH_ASSOC);
@@ -43,15 +43,12 @@ $tags = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
     <form action="add_recipe_inc.php" method="POST" class="recipe-form">
 
-        <!-- Titel -->
         <label for="title">Titel van recept</label>
         <input type="text" name="title" id="title" required>
 
-        <!-- Description -->
         <label for="description">Korte beschrijving</label>
         <textarea name="description" id="description" rows="4" required></textarea>
 
-        <!-- Category -->
         <label for="category">Categorie</label>
         <select name="categoryId" id="category" required>
             <option value="">Kies een categorie</option>
@@ -60,7 +57,6 @@ $tags = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
         </select>
 
-        <!-- Tags -->
         <label>Tags</label>
         <div class="tag-container">
             <?php foreach ($tags as $tag): ?>
@@ -71,16 +67,13 @@ $tags = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
         </div>
 
-        <!-- Image URL -->
         <label for="imagePath">Image URL</label>
         <input type="url" name="imagePath" id="imagePath" placeholder="https://example.com/image.jpg" required>
 
-        <!-- Ingrediënten -->
         <h2>Ingrediënten</h2>
         <div id="ingredients-wrapper"></div>
         <button type="button" id="add-ingredient-btn" class="btn-add">+ Ingrediënt toevoegen</button>
 
-        <!-- Stappen -->
         <h2>Bereidingsstappen</h2>
         <div id="steps-wrapper"></div>
         <button type="button" id="add-step-btn" class="btn-add">+ Stap toevoegen</button>

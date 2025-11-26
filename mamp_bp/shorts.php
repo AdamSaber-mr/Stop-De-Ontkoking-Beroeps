@@ -7,18 +7,19 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $category_id = '';
-// ---- Variabelen ophalen uit URL ----
 if ( isset($_GET['catogory_id']) ) {
     $category_id = $_GET['catogory_id'];
 };
-$recept_id   = $_GET['recept_id'];
+
+$recept_id   = '';
+if ( isset($_GET['recept_id']) ) {
+    $recept_id = $_GET['recept_id'];
+};
 
 // Hier alle recepten opslaan ook de random recepten
 $item_to_add = [];
 
-// -----------------------------
-// Functie: haal 1 recept op
-// -----------------------------
+// Functie haal 1 recept op
 function getRecipeById($conn, $id) {
     $sql = "SELECT recipeId, title, description, categoryId, imagePath 
             FROM recipes 
@@ -28,10 +29,7 @@ function getRecipeById($conn, $id) {
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-
-// --------------------------------------------
-// Functie: haal alle ingredients van recept
-// --------------------------------------------
+// Functie haal alle ingredients van recept
 function getIngredients($conn, $recipeId) {
     $sql = "SELECT name, quantity 
             FROM ingredients 
@@ -55,9 +53,7 @@ function getIngredients($conn, $recipeId) {
     return $list;
 }
 
-// --------------------------------------------
-// Functie: haal steps op van recept
-// --------------------------------------------
+// Functie haal steps op van recept
 function getSteps($conn, $recipeId) {
     $sql = "SELECT stepNumber, instruction
             FROM steps
@@ -80,9 +76,7 @@ function getSteps($conn, $recipeId) {
     return $steps;
 }
 
-// -------------------------------------------------------
-// Stap 1: Gekozen recept ophalen en toevoegen als er een id
-// -------------------------------------------------------
+// Gekozen recept ophalen en toevoegen als er een id
 if ($recept_id) {
 
     $r = getRecipeById($conn, $recept_id);
@@ -100,9 +94,7 @@ if ($recept_id) {
     }
 }
 
-// -------------------------------------------------------------------
-// Stap 2: Random extra recepten ophalen
-// -------------------------------------------------------------------
+// Random extra recepten ophalen
 $sql = "SELECT recipeId, title, description, categoryId, imagePath FROM recipes ";
 $params = [];
 

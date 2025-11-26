@@ -1,8 +1,3 @@
-/* =========================================================
-   🌿 COOKUP ADMIN DASHBOARD — CLEAN, RESPONSIVE & MODERN
-   ========================================================= */
-
-/* -------- GLOBAL STYLES -------- */
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #f8f9fa, #ecf9f5);
@@ -12,12 +7,9 @@ body {
     min-height: 100vh;
 }
 
-/* =========================================================
-   MAIN ADMIN LAYOUT
-   ========================================================= */
 .admin-shell {
     display: flex;
-    align-items: stretch; /* Sidebar en main even hoog */
+    align-items: stretch;
     justify-content: flex-start;
     width: 100%;
     max-width: 1500px;
@@ -27,9 +19,6 @@ body {
     box-sizing: border-box;
 }
 
-/* =========================================================
-   SIDEBAR
-   ========================================================= */
 .admin-sidebar {
     flex: 0 0 250px;
     background: #C9F8E3;
@@ -58,7 +47,6 @@ body {
     color: #173f35;
 }
 
-/* LINKS */
 .sidebar-nav ul {
     list-style: none;
     padding: 0;
@@ -103,9 +91,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* =========================================================
-   MAIN CONTENT AREA
-   ========================================================= */
 .admin-main {
     flex: 1;
     border-radius: 1.2rem;
@@ -114,7 +99,6 @@ body {
     box-shadow: 0 6px 25px rgba(0,0,0,0.06);
 }
 
-/* Wrapper binnen main */
 .wrapper {
     width: 100%;
     margin: 0 auto;
@@ -127,10 +111,6 @@ body {
     text-align: left;
     letter-spacing: 0.2px;
 }
-
-/* =========================================================
-   TABLES (USERS & RECIPES)
-   ========================================================= */
 
 table {
     width: 100%;
@@ -149,7 +129,6 @@ table {
     display: none;
 }
 
-/* HEADER */
 thead {
     background: #b8f0d2;
     color: #222;
@@ -176,14 +155,12 @@ tbody tr:hover {
     transform: scale(1.01);
 }
 
-/* ===== Lege tabelmelding ===== */
 td[colspan] {
     font-style: italic;
     color: #777;
     padding: 2rem;
 }
 
-/* ===== Actieknoppen ===== */
 .actieknoppen {
     display: flex;
     flex-wrap: wrap;
@@ -201,7 +178,6 @@ td[colspan] {
     font-size: 0.95rem;
 }
 
-/* Kleuren voor knoppen */
 .btn-detail {
     background: #00cec9;
 }
@@ -240,14 +216,12 @@ tbody tr:hover {
     transform: scale(1.01);
 }
 
-/* ===== Lege tabelmelding ===== */
 td[colspan] {
     font-style: italic;
     color: #777;
     padding: 2rem;
 }
 
-/* BUTTONS */
 .actieknoppen {
     display: flex;
     flex-wrap: wrap;
@@ -274,9 +248,6 @@ td[colspan] {
     filter: brightness(1.1);
 }
 
-/* =========================================================
-   RESPONSIVE TABLE (MOBILE VIEW)
-   ========================================================= */
 @media (max-width: 800px) {
 
     table, thead, tbody, th, td, tr {
@@ -314,9 +285,6 @@ td[colspan] {
     }
 }
 
-/* =========================================================
-   SIDEBAR RESPONSIVE
-   ========================================================= */
 @media (max-width: 1000px) {
     .admin-shell {
         flex-direction: column;

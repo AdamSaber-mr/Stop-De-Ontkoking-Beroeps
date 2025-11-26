@@ -16,17 +16,17 @@ global $conn;
 
 $id = $_GET['id'] ?? 0;
 
-// 1. Recipe
+// Recipe
 $stmt = $conn->prepare("SELECT * FROM recipes WHERE recipeId = :id");
 $stmt->execute(['id' => $id]);
 $recipe = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// 2. Category
+// Categorie
 $catStmt = $conn->prepare("SELECT name FROM categories WHERE categoryId = :cid");
 $catStmt->execute(['cid' => $recipe['categoryId']]);
 $category = $catStmt->fetchColumn();
 
-// 3. Tags
+// Tags
 $tagStmt = $conn->prepare("
     SELECT t.name 
     FROM tags t 
@@ -36,7 +36,7 @@ $tagStmt = $conn->prepare("
 $tagStmt->execute(['id' => $id]);
 $tags = $tagStmt->fetchAll(PDO::FETCH_COLUMN);
 
-// 4. Ingredients
+// Ingredients
 $ingStmt = $conn->prepare("
     SELECT name, quantity 
     FROM ingredients 
@@ -45,7 +45,7 @@ $ingStmt = $conn->prepare("
 $ingStmt->execute(['id' => $id]);
 $ingredients = $ingStmt->fetchAll(PDO::FETCH_ASSOC);
 
-// 5. Steps
+// Steps
 $stepStmt = $conn->prepare("
     SELECT stepNumber, instruction 
     FROM steps 

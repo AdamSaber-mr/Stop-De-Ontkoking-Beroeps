@@ -1,4 +1,3 @@
-/* header styling */
 #header {
     position: sticky;
     top: 0;
@@ -12,7 +11,7 @@
 
 #header.shrink {
     padding: 0.5rem 2rem;
-    background-color: #94E0C7; /* slightly darker on scroll */
+    background-color: #94E0C7;
 }
 
 #site-title {
@@ -116,7 +115,6 @@
     background-color: #33CFA5;
 }
 
-/* Hover effect */
 #account-section button:hover {
     background-color: #2FB895;
     transform: translateY(-2px);
@@ -137,7 +135,6 @@
 }
 
 
-/* header media qerry */
 @media (max-width: 555px) {
    #header *{
     display: none;
